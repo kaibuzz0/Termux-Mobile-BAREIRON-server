@@ -1153,6 +1153,14 @@ int cs_chat (int client_fd) {
 
   // Handle chat commands
 
+  // Zombie Shooter Mod - Hook for game commands
+  if (recv_buffer[0] == '/' && recv_buffer[1] != '/') {
+    // Pass to zombie game command handler
+    extern void handle_command_enhanced(const char* cmd, int player_id);
+    handle_command_enhanced((char *)recv_buffer + 1, client_fd);
+    goto cleanup;
+  }
+
   if (!strncmp((char *)recv_buffer, "!msg", 4)) {
 
     int target_offset = 5;

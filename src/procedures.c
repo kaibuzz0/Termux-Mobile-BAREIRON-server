@@ -1627,6 +1627,10 @@ void handleServerTick (int64_t time_since_last_tick) {
   // Increment server tick counter
   server_ticks ++;
 
+  // Zombie Shooter Mod - Game tick
+  extern void zombie_game_tick_enhanced();
+  zombie_game_tick_enhanced();
+
   // Update player events
   for (int i = 0; i < MAX_PLAYERS; i ++) {
     PlayerData *player = &player_data[i];

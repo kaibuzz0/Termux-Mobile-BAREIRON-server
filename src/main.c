@@ -39,6 +39,7 @@
 #include "registries.h"
 #include "procedures.h"
 #include "serialize.h"
+#include "zombie_game.h"
 
 /**
  * Routes an incoming packet to its packet handler or procedure.
@@ -522,6 +523,10 @@ int main () {
 
   // Start the disk/flash serializer (if applicable)
   if (initSerializer()) exit(EXIT_FAILURE);
+
+  // Zombie Shooter Mod - Initialize game
+  extern void zombie_game_init_enhanced();
+  zombie_game_init_enhanced();
 
   // Initialize all file descriptor references to -1 (unallocated)
   int clients[MAX_PLAYERS], client_index = 0;
