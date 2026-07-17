@@ -1,0 +1,86 @@
+{
+  "game": {
+    "name": "BareIron Zombie Shooter",
+    "version": "1.0.0",
+    "max_players": 8,
+    "max_zombies": 256,
+    "starting_wave": 1,
+    "difficulty_scale": 1.2
+  },
+  "weapons": {
+    "pistol": {
+      "damage": 25,
+      "ammo": 12,
+      "range": 50,
+      "fire_rate": 0.5,
+      "auto": false
+    },
+    "shotgun": {
+      "damage": 60,
+      "ammo": 8,
+      "range": 30,
+      "fire_rate": 1.0,
+      "auto": false
+    },
+    "rifle": {
+      "damage": 35,
+      "ammo": 30,
+      "range": 100,
+      "fire_rate": 0.1,
+      "auto": true
+    },
+    "minigun": {
+      "damage": 15,
+      "ammo": 200,
+      "range": 80,
+      "fire_rate": 0.05,
+      "auto": true
+    },
+    "grenade": {
+      "damage": 200,
+      "ammo": 3,
+      "range": 40,
+      "fire_rate": 2.0,
+      "splash": true
+    }
+  },
+  "zombies": {
+    "normal": {
+      "health": 100,
+      "speed": 3.0,
+      "damage": 10,
+      "spawn_weight": 60
+    },
+    "fast": {
+      "health": 50,
+      "speed": 6.0,
+      "damage": 8,
+      "spawn_weight": 20
+    },
+    "tank": {
+      "health": 300,
+      "speed": 1.5,
+      "damage": 20,
+      "spawn_weight": 15
+    },
+    "boss": {
+      "health": 2000,
+      "speed": 2.0,
+      "damage": 50,
+      "spawn_weight": 5
+    }
+  },
+  "waves": {
+    "base_zombies": 10,
+    "zombies_per_wave": 5,
+    "boss_every": 5,
+    "time_between_waves": 10
+  },
+  "server": {
+    "port": 25565,
+    "max_clients": 8,
+    "view_distance": 8,
+    "simulation_distance": 8,
+    "motd": "☠️ BareIron Zombie Shooter - Survive the Horde! ☠️"
+  }
+}

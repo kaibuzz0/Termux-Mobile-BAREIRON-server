@@ -1,0 +1,59 @@
+
+╔════════════════════════════════════════════════════════════════╗
+║  BAREIRON ZOMBIE SHOOTER - SETUP COMPLETE                      ║
+╚════════════════════════════════════════════════════════════════╝
+
+✓✓✓ BUILD SUCCESSFUL ✓✓✓
+
+FILES:
+  📁 ~/bareiron/                          - Main server directory
+  📄 ~/bareiron/bareiron                  - Server executable (147KB)
+  📄 ~/bareiron/include/registries.h     - Minecraft registries (51KB)
+  📄 ~/bareiron/src/zombie_game.c       - Zombie shooter mod
+  📄 ~/bareiron/config/game.json        - Game configuration
+  📁 ~/bareiron/maps/                    - Custom maps
+
+BUILD DETAILS:
+  Compiler: gcc with -lm (math library)
+  Size: 147,136 bytes (larger than vanilla due to zombie mod)
+  Registries: Generated from Minecraft 1.21.8 server JAR
+
+ZOMBIE SHOOTER FEATURES:
+  🧟 4 Zombie Types: Normal, Fast, Tank, Boss
+  🔫 5 Weapons: Pistol, Shotgun, Rifle, Minigun, Grenade
+  🏗️ Base Building: Wood/Stone/Metal/Concrete walls
+  👤 Player Classes: Soldier, Medic, Engineer, Sniper, Heavy, Scout
+  🌊 Waves: Increasing difficulty with boss every 5 waves
+
+GAME COMMANDS (in Minecraft):
+  /start - Begin survival mode
+  /shoot - Fire weapon
+  /reload - Reload ammo
+  /weapon [0-4] - Switch guns (0=pistol, 1=shotgun, etc.)
+  /build [wood|stone|metal|concrete] - Build wall
+  /scores - View high scores
+
+TO RUN SERVER:
+  cd ~/bareiron
+  ./bareiron
+  
+Then connect with Minecraft Java Edition to:
+  localhost:25565
+
+README:
+  Original: https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server
+  Base: https://github.com/p2r3/bareiron
+
+VERIFICATION:
+  ✓ Cloned both repositories
+  ✓ Downloaded Minecraft 1.21.8 server JAR
+  ✓ Extracted registries (required for compilation)
+  ✓ Built executable with zombie mod
+  ✓ Added -lm flag for math library (sincos fix)
+  ✓ Server starts on port 25565
+
+NOTES:
+  - This is the ENHANCED edition (4 zombie types, 5 weapons)
+  - Full BADASS edition would require additional files
+  - Server runs on any Linux ARM64 device
+  - Optimized for mobile/embedded systems

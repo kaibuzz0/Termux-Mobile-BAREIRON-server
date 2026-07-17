@@ -1,0 +1,51 @@
+
+╔════════════════════════════════════════════════════════════╗
+║     BAREIRON ZOMBIE SHOOTER - SETUP REPORT                 ║
+╚════════════════════════════════════════════════════════════╝
+
+📦 REPOSITORIES CLONED:
+  ✓ https://github.com/p2r3/bareiron.git → ~/bareiron
+  ✓ https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git → /tmp/bareiron
+
+🎮 WHAT THIS IS:
+  BareIron: A minimalist Minecraft server for embedded systems
+  Zombie Mod: A zombie shooter game mode for BareIron
+  
+⚠️  BUILD LIMITATION:
+  The mod requires Minecraft registry data (registries.h) which must be
+  extracted from an official Minecraft server JAR. This requires:
+  - Java 21+
+  - Minecraft server JAR file
+  - Running extract_registries.sh
+  
+  Without this, the code won't compile (missing block IDs, biome IDs, etc.)
+
+✓ WORKING SOLUTION:
+  Pre-built binary (bareiron.exe) downloaded from:
+  https://github.com/p2r3/bareiron/releases/download/latest/bareiron.exe
+  
+  This runs vanilla BareIron (NOT the zombie mod yet)
+
+📁 MOD FILES COPIED:
+  ~/bareiron/src/zombie_game.c    - Zombie game logic
+  ~/bareiron/src/zombie_game.h    - Header file
+  ~/bareiron/config/game.json     - Game configuration
+  ~/bareiron/maps/               - Custom maps
+
+🔧 TO COMPLETE SETUP:
+  1. Obtain Minecraft server JAR (1.21.8+)
+  2. Run: cd ~/bareiron && ./extract_registries.sh
+  3. Rebuild: ./build.sh
+  4. Server will then include zombie shooter mod
+
+🚀 TO RUN CURRENT SERVER:
+  cd ~/bareiron
+  ./bareiron.exe
+  
+  Then connect with Minecraft Java to localhost:25565
+
+📝 NOTES:
+  - The pre-built binary works but doesn't have zombie features
+  - Full zombie mod requires registry extraction + rebuild
+  - Server uses ~779KB, runs on port 25565
+  - Supports Minecraft Java Edition 1.21.8
