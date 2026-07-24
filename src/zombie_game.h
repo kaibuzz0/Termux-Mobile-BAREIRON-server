@@ -7,17 +7,17 @@
 #define ZOMBIE_SHOOTER_H
 
 // Game initialization
-void zombie_game_init();
+void zombie_game_init_enhanced();
 void zombie_player_join(int player_id);
 void zombie_shooter_update();
 
 // Game actions
 void player_shoot(int player_id);
-void spawn_wave();
-void zombie_game_tick();
+void spawn_wave_enhanced();
+void zombie_game_tick_enhanced();
 
 // Commands
-void handle_command(const char* cmd);
+void handle_command_enhanced(const char* cmd);
 void print_status();
 
 // Zombie types
@@ -30,7 +30,7 @@ void print_status();
 #define WEAPON_PISTOL 0
 #define WEAPON_SHOTGUN 1
 #define WEAPON_RIFLE 2
-#define WEAPON_WEAPON_MINIGUN 3
+#define WEAPON_MINIGUN 3
 #define WEAPON_GRENADE 4
 
 #endif
