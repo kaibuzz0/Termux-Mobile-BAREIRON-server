@@ -18,6 +18,9 @@
 #include "fathers_house.h"
 #include "gameplay_expansion.h"
 #include "villages_npcs.h"
+#include "savegame.h"
+#include "multiplayer.h"
+#include "crafting_expansion.h"
 // ==================== CONSTANTS ====================
 
 // Game modes
@@ -855,6 +858,56 @@ void handle_command_enhanced(const char* cmd, int player_id) {
     else if (strcmp(cmd, "/events") == 0) {
         list_active_events(player_id);
     }
+    else if (strcmp(cmd, "/craft") == 0) {
+        show_crafting_menu(player_id);
+    }
+    else if (strncmp(cmd, "/craft ", 7) == 0) {
+        int item = atoi(cmd + 7);
+        craft_item(player_id, item);
+    }
+    else if (strcmp(cmd, "/save") == 0) {
+        save_game_state();
+    }
+    else if (strcmp(cmd, "/load") == 0) {
+        load_game_state();
+    }
+    else if (strcmp(cmd, "/delete_save") == 0) {
+        delete_save();
+    }
+    else if (strncmp(cmd, "/team create", 12) == 0) {
+        char team_name[32] = "";
+        if (strlen(cmd) > 13) strncpy(team_name, cmd + 13, 31);
+        team_name[31] = '\0';
+        create_team(player_id, team_name);
+    }
+    else if (strncmp(cmd, "/team join ", 11) == 0) {
+        int team_id = atoi(cmd + 11);
+        join_team(player_id, team_id);
+    }
+    else if (strcmp(cmd, "/team leave") == 0) {
+        leave_team(player_id);
+    }
+    else if (strcmp(cmd, "/team list") == 0) {
+        list_teams();
+    }
+    else if (strncmp(cmd, "/team info ", 11) == 0) {
+        int team_id = atoi(cmd + 11);
+        show_team_info(team_id);
+    }
+    else if (strncmp(cmd, "/deposit ", 9) == 0) {
+        int amount = atoi(cmd + 9);
+        deposit_team_materials(player_id, amount);
+    }
+    else if (strncmp(cmd, "/withdraw ", 10) == 0) {
+        int amount = atoi(cmd + 10);
+        withdraw_team_materials(player_id, amount);
+    }
+    else if (strcmp(cmd, "/call_help") == 0) {
+        call_for_help(player_id);
+    }
+    else if (strcmp(cmd, "/trade_req") == 0) {
+        list_trade_requests(player_id);
+    }
     else if (strcmp(cmd, "/materials") == 0) {
         printf("Materials: %d (used to build/repair barricades)\n", p->materials);
     }
@@ -895,7 +948,21 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         printf("║   /events         - Active world events      ║\n");
         printf("║   /witch          - Witch boss status        ║\n");
         printf("║   /summon_witch   - Draw out the Witch       ║\n");
-        printf("║   /heroes         - Retro hero status        ║\n");
+        printf("║   /craft          - Show crafting menu       ║\n");
+        printf("║   /craft [id]     - Craft item [id]        ║\n");
+        printf("║   /save           - Save game state          ║\n");
+        printf("║   /load           - Load saved game          ║\n");
+        printf("║   /delete_save    - Delete save (new game)   ║\n");
+        printf("║   /team create    - Create a team            ║\n");
+        printf("║   /team join [id] - Join team [id]           ║\n");
+        printf("║   /team leave     - Leave your team          ║\n");
+        printf("║   /team list      - List all teams           ║\n");
+        printf("║   /team info [id] - Show team details        ║\n");
+        printf("║   /share [p] [n]  - Give [n] mats to player  ║\n");
+        printf("║   /deposit [n]    - Deposit to team pool     ║\n");
+        printf("║   /withdraw [n]   - Withdraw from team pool   ║\n");
+        printf("║   /call_help      - Call for assistance      ║\n");
+        printf("║   /trade_req      - Player trade requests    ║\n");
         printf("╚════════════════════════════════════════════════╝\n\n");
     }
     else {
@@ -926,6 +993,21 @@ void zombie_game_init_enhanced() {
     
     // Initialize villages, NPCs, and the Witch boss
     init_village_npc_systems();
+    
+    // Initialize multiplayer systems
+    init_team_system();
+    init_player_trading();
+    
+    // Initialize crafting expansion
+    init_crafting_system();
+    
+    // Try to load save game
+    if (save_exists()) {
+        printf("[SAVE] Found existing save file.\n");
+        printf("[SAVE] Type /load to restore, /new to start fresh.\n");
+    } else {
+        printf("[SAVE] No save found. A new save will be created automatically.\n");
+    }
     
     printf("\n");
     printf("╔════════════════════════════════════════════════╗\n");
