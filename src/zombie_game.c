@@ -845,6 +845,16 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         if (!found) printf("║  No NPCs nearby.                                           ║\n");
         printf("╚════════════════════════════════════════════════════════════╝\n\n");
     }
+    else if (strcmp(cmd, "/quests") == 0) {
+        list_active_quests(player_id);
+    }
+    else if (strncmp(cmd, "/quest ", 7) == 0) {
+        int quest_id = atoi(cmd + 7);
+        activate_quest(quest_id);
+    }
+    else if (strcmp(cmd, "/events") == 0) {
+        list_active_events(player_id);
+    }
     else if (strcmp(cmd, "/materials") == 0) {
         printf("Materials: %d (used to build/repair barricades)\n", p->materials);
     }
@@ -880,6 +890,9 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         printf("║   /buy [id] [slot]- Buy from NPC [id]        ║\n");
         printf("║   /follow_npc [id]- Recruit NPC [id]         ║\n");
         printf("║   /follow         - Recruit a hero           ║\n");
+        printf("║   /quests         - List active quests       ║\n");
+        printf("║   /quest [id]     - Accept quest [id]        ║\n");
+        printf("║   /events         - Active world events      ║\n");
         printf("║   /witch          - Witch boss status        ║\n");
         printf("║   /summon_witch   - Draw out the Witch       ║\n");
         printf("║   /heroes         - Retro hero status        ║\n");
