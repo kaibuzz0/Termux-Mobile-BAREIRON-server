@@ -794,7 +794,7 @@ void handle_command_enhanced(const char* cmd, int player_id) {
     }
     else if (strcmp(cmd, "/heroes") == 0) {
         printf("\n╔════════════════════════════════════════════════════════════╗\n");
-        printf("║  ⭐ RETRO HEROES                                         ║\n");
+        printf("║  RETRO HEROES                                            ║\n");
         printf("╠════════════════════════════════════════════════════════════╣\n");
         int active_count = 0;
         for (int i = 0; i < 4; i++) {
@@ -807,6 +807,42 @@ void handle_command_enhanced(const char* cmd, int player_id) {
             printf("║  No heroes currently active.                               ║\n");
             printf("║  They appear rarely (0.1%% chance) during gameplay.        ║\n");
         }
+        printf("╚════════════════════════════════════════════════════════════╝\n\n");
+    }
+    else if (strncmp(cmd, "/trade ", 8) == 0) {
+        int npc_id = atoi(cmd + 8);
+        show_trade_offers(player_id, npc_id);
+    }
+    else if (strncmp(cmd, "/buy ", 5) == 0) {
+        int npc_id = 0, slot = 0;
+        sscanf(cmd + 5, "%d %d", &npc_id, &slot);
+        execute_trade(player_id, npc_id, slot);
+    }
+    else if (strncmp(cmd, "/follow_npc ", 13) == 0) {
+        int npc_id = atoi(cmd + 13);
+        npc_follow_player(npc_id, player_id);
+    }
+    else if (strcmp(cmd, "/follow") == 0) {
+        // Find nearest hero and recruit them
+        for (int i = 0; i < 4; i++) {
+            if (heroes[i].active && heroes[i].following_player == -1) {
+                heroes[i].following_player = player_id;
+                printf("[HERO] %s has joined your party!\n", heroes[i].name);
+                break;
+            }
+        }
+    }
+    else if (strcmp(cmd, "/npcs") == 0) {
+        printf("\n╔════════════════════════════════════════════════════════════╗\n");
+        printf("║  NEARBY NPCS                                               ║\n");
+        printf("╠════════════════════════════════════════════════════════════╣\n");
+        int found = 0;
+        for (int i = 0; i < MAX_NPCS; i++) {
+            if (!npcs[i].active) continue;
+            printf("║  [%d] %-10s (%s)\n", i, npcs[i].name, get_npc_class_name(npcs[i].npc_class));
+            found++;
+        }
+        if (!found) printf("║  No NPCs nearby.                                           ║\n");
         printf("╚════════════════════════════════════════════════════════════╝\n\n");
     }
     else if (strcmp(cmd, "/materials") == 0) {
@@ -839,6 +875,11 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         printf("║                                                ║\n");
         printf("║ VILLAGES & NPCS                                ║\n");
         printf("║   /villages       - List known settlements   ║\n");
+        printf("║   /npcs           - List nearby NPCs         ║\n");
+        printf("║   /trade [id]     - Trade with NPC [id]      ║\n");
+        printf("║   /buy [id] [slot]- Buy from NPC [id]        ║\n");
+        printf("║   /follow_npc [id]- Recruit NPC [id]         ║\n");
+        printf("║   /follow         - Recruit a hero           ║\n");
         printf("║   /witch          - Witch boss status        ║\n");
         printf("║   /summon_witch   - Draw out the Witch       ║\n");
         printf("║   /heroes         - Retro hero status        ║\n");
