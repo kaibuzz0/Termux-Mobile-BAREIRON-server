@@ -15,6 +15,7 @@
 #include <time.h>
 #include <math.h>
 #include "zombie_game.h"
+#include "fathers_house.h"
 
 // ==================== CONSTANTS ====================
 
@@ -386,6 +387,12 @@ void print_highscores() {
 // ==================== ENHANCED ZOMBIE SPAWNING ====================
 
 void spawn_zombie_enhanced(int type, float x, float z) {
+    // BLOCK: Do not spawn zombies within The Father's House sanctuary
+    if (block_hostile_spawn(x, z)) {
+        printf("[SANCTUARY] Zombie spawn blocked at (%.1f, %.1f) — sacred ground\n", x, z);
+        return;
+    }
+    
     for (int i = 0; i < MAX_ZOMBIES; i++) {
         if (!zombies[i].active || zombies[i].health <= 0) {
             zombies[i].type = type;
@@ -730,6 +737,37 @@ void handle_command_enhanced(const char* cmd, int player_id) {
     else if (strcmp(cmd, "/scores") == 0) {
         print_highscores();
     }
+    else if (strcmp(cmd, "/sanctuary") == 0) {
+        printf("\n");
+        printf("╔════════════════════════════════════════════════════════════╗\n");
+        printf("║  🕊️  THE FATHER'S HOUSE                                    ║\n");
+        printf("║                                                            ║\n");
+        if (sanctuary.discovered) {
+            printf("║  Sanctuary discovered!                                     ║\n");
+            printf("║  Location: X=%d, Y=%d, Z=%d                             ║\n",
+                   FATHERS_HOUSE_X, FATHERS_HOUSE_Y, FATHERS_HOUSE_Z);
+            printf("║  Total visits: %d                                         ║\n", sanctuary.total_visits);
+            printf("║  Players inside: %d                                       ║\n", sanctuary.players_inside);
+        } else {
+            printf("║  The Father's House awaits those who seek.                 ║\n");
+            printf("║  Search the world for clues.                               ║\n");
+            printf("║  Type /hint for guidance.                                ║\n");
+        }
+        printf("╚════════════════════════════════════════════════════════════╝\n\n");
+    }
+    else if (strcmp(cmd, "/hint") == 0) {
+        printf("\n📜 A whisper from the ancients:\n");
+        printf("   \"%s\"\n\n", get_sanctuary_hint(rand()));
+    }
+    else if (strcmp(cmd, "/lore") == 0) {
+        printf("\n╔════════════════════════════════════════════════════════════╗\n");
+        printf("║  📖 SACRED SYMBOLS — What do they mean?                   ║\n");
+        printf("╠════════════════════════════════════════════════════════════╣\n");
+        for (int s = 0; s <= 7; s++) {
+            printf("║  %s\n", get_symbol_lore(s));
+        }
+        printf("╚════════════════════════════════════════════════════════════╝\n\n");
+    }
     else if (strcmp(cmd, "/materials") == 0) {
         printf("Materials: %d (used to build/repair barricades)\n", p->materials);
     }
@@ -752,6 +790,11 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         printf("║   /wave           - Current wave             ║\n");
         printf("║   /scores         - High score table         ║\n");
         printf("║   /map [name]     - Load custom map          ║\n");
+        printf("║                                                ║\n");
+        printf("║ DISCOVERY                                      ║\n");
+        printf("║   /sanctuary      - The Father's House info  ║\n");
+        printf("║   /hint           - Cryptic guidance         ║\n");
+        printf("║   /lore           - Sacred symbol meanings   ║\n");
         printf("╚════════════════════════════════════════════════╝\n\n");
     }
     else {
@@ -776,6 +819,9 @@ void zombie_game_init_enhanced() {
     game.powerup_spawn_timer = 30;
     
     srand(time(NULL));
+    
+    // Initialize The Father's House sanctuary
+    fathers_house_init();
     
     printf("\n");
     printf("╔════════════════════════════════════════════════╗\n");

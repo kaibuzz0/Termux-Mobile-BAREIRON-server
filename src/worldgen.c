@@ -9,6 +9,7 @@
 #include "registries.h"
 #include "procedures.h"
 #include "worldgen.h"
+#include "fathers_house.h"
 
 uint32_t getChunkHash (short x, short z) {
 
@@ -377,6 +378,14 @@ uint8_t getBlockAt (int x, int y, int z) {
 
   uint8_t block_change = getBlockChange(x, y, z);
   if (block_change != 0xFF) return block_change;
+
+  // THE FATHER'S HOUSE: Check if we're in sanctuary territory
+  if (sanctuary_override_needed(x, z)) {
+    uint8_t sanctuary_block = sanctuary_terrain_at(x, y, z);
+    if (sanctuary_block != B_air) {
+      return sanctuary_block;
+    }
+  }
 
   short anchor_x = div_floor(x, CHUNK_SIZE);
   short anchor_z = div_floor(z, CHUNK_SIZE);
