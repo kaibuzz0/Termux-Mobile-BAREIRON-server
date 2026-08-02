@@ -16,7 +16,8 @@
 #include <math.h>
 #include "zombie_game.h"
 #include "fathers_house.h"
-
+#include "gameplay_expansion.h"
+#include "villages_npcs.h"
 // ==================== CONSTANTS ====================
 
 // Game modes
@@ -768,6 +769,46 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         }
         printf("╚════════════════════════════════════════════════════════════╝\n\n");
     }
+    else if (strcmp(cmd, "/villages") == 0) {
+        list_villages(player_id);
+    }
+    else if (strcmp(cmd, "/witch") == 0) {
+        if (!is_witch_alive()) {
+            printf("\n");
+            printf("╔════════════════════════════════════════════════════════════╗\n");
+            printf("║  🧙 THE WITCH                                            ║\n");
+            printf("║                                                            ║\n");
+            printf("║  A dark presence prowls the wilderness.                    ║\n");
+            printf("║  Type /summon_witch to draw her out.                      ║\n");
+            printf("║                                                            ║\n");
+            printf("║  ACHIEVEMENT: Defeat her for 'Witch Hunter' title.        ║\n");
+            printf("╚════════════════════════════════════════════════════════════╝\n");
+            printf("\n");
+        } else {
+            printf("[WITCH] The Witch prowls at (%.1f, %.1f) | Health: %.0f/%.0f | Phase: %d\n",
+                   witch_boss.x, witch_boss.z, witch_boss.health, witch_boss.max_health, witch_boss.phase);
+        }
+    }
+    else if (strcmp(cmd, "/summon_witch") == 0) {
+        spawn_witch_boss(0, 80);
+    }
+    else if (strcmp(cmd, "/heroes") == 0) {
+        printf("\n╔════════════════════════════════════════════════════════════╗\n");
+        printf("║  ⭐ RETRO HEROES                                         ║\n");
+        printf("╠════════════════════════════════════════════════════════════╣\n");
+        int active_count = 0;
+        for (int i = 0; i < 4; i++) {
+            if (heroes[i].active) {
+                printf("║  %s — Kills: %d                                          ║\n", heroes[i].name, heroes[i].kills);
+                active_count++;
+            }
+        }
+        if (!active_count) {
+            printf("║  No heroes currently active.                               ║\n");
+            printf("║  They appear rarely (0.1%% chance) during gameplay.        ║\n");
+        }
+        printf("╚════════════════════════════════════════════════════════════╝\n\n");
+    }
     else if (strcmp(cmd, "/materials") == 0) {
         printf("Materials: %d (used to build/repair barricades)\n", p->materials);
     }
@@ -795,6 +836,12 @@ void handle_command_enhanced(const char* cmd, int player_id) {
         printf("║   /sanctuary      - The Father's House info  ║\n");
         printf("║   /hint           - Cryptic guidance         ║\n");
         printf("║   /lore           - Sacred symbol meanings   ║\n");
+        printf("║                                                ║\n");
+        printf("║ VILLAGES & NPCS                                ║\n");
+        printf("║   /villages       - List known settlements   ║\n");
+        printf("║   /witch          - Witch boss status        ║\n");
+        printf("║   /summon_witch   - Draw out the Witch       ║\n");
+        printf("║   /heroes         - Retro hero status        ║\n");
         printf("╚════════════════════════════════════════════════╝\n\n");
     }
     else {
@@ -822,6 +869,9 @@ void zombie_game_init_enhanced() {
     
     // Initialize The Father's House sanctuary
     fathers_house_init();
+    
+    // Initialize villages, NPCs, and the Witch boss
+    init_village_npc_systems();
     
     printf("\n");
     printf("╔════════════════════════════════════════════════╗\n");
