@@ -1,124 +1,405 @@
-# bareiron
-Minimalist Minecraft server for memory-restrictive embedded systems.
+# 🧟 bareiron — Enhanced Zombie Shooter Edition
 
-The goal of this project is to enable hosting Minecraft servers on very weak devices, such as the ESP32. The project's priorities are, in order: **memory usage**, **performance**, and **features**. Because of this, compliance with vanilla Minecraft is not guaranteed, nor is it a goal of the project.
+A **memory-first** Minecraft server fork turned into a fully-featured zombie survival shooter.
 
-- Minecraft version: `1.21.8`
-- Protocol version: `772`
+```
+  Memory: ~227KB binary  |  Protocol: 772 (MC 1.21.8)  |  Players: 8 max
+```
 
-> [!WARNING]
-> Currently, only the vanilla client is officially supported. Issues have been reported when using Fabric or similar.
+> This fork keeps bareiron's extreme minimalism while adding deep survival gameplay —
+> zombies, bosses, villages, NPCs, quests, crafting, teams, and persistent saves.
 
-## Quick Start (One Command)
+---
 
-The easiest way to get running:
+## 📦 Quick Start (3 Commands)
 
 ```bash
-# 1. Clone the repo
+# 1. Clone
 git clone https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git
 cd Termux-Mobile-BAREIRON-server
 
-# 2. Run the installer (downloads Java 21 if needed, builds everything)
+# 2. Install (auto-detects Java 21, downloads Minecraft JAR, builds)
 ./install.sh
 
-# 3. Start the server
+# 3. Run
+./quickstart.sh        # or: ./bareiron
+```
+
+That's it. Server listens on **port 25565**. Connect with **Minecraft Java 1.21.8**.
+
+### Verify It's Working
+
+```bash
+python3 test_server.py          # Local test
+python3 test_server.py IP PORT  # Remote test
+```
+
+Expected output:
+```
+Version: 1.21.8  |  Protocol: 772  |  MOTD: A bareiron server
+✅ ALL TESTS PASSED
+```
+
+---
+
+## 🎮 What's Different From Upstream?
+
+| | **Upstream bareiron** | **This Fork** |
+|---|---|---|
+| Purpose | Vanilla-compatible Minecraft server | Zombie survival shooter |
+| Binary | ~150KB | ~227KB (+77KB for all features) |
+| Gameplay | Sandbox | Wave-based survival, bosses, RPG systems |
+| NPCs | None | 15 classes, combat AI, trading |
+| World | Empty | 12 villages, 8 village types |
+| Progression | None | Perks, weapon upgrades, quests, crafting |
+| Multiplayer | Basic | Teams, shared pools, trading, revive |
+| Persistence | world.bin only | Full save/load system |
+
+---
+
+## 🎯 Feature Breakdown
+
+### Core Combat
+- **8 Zombie Types** — Walker, Runner, Tank, Boss, Crawler, Boomer, Spitter, Ninja
+- **6 Power-ups** — Insta-kill, Double Points, Nuke, Max Ammo, Carpenter, Speed Cola
+- **7 Weapons** — Pistol, Shotgun, Assault Rifle, Sniper, SMG, LMG, RPG
+- **Wave Survival** — Escalating difficulty with boss every 5 waves
+- **Barricade Building** — Place/repair defenses with collected materials
+
+### The Father's House (Sanctuary)
+Hidden at coordinates **(352, 33, -318)**. A primordial safe zone with:
+- 150-block radius where hostile mobs cannot spawn
+- 7 biblical references: twelve stones, olive grove, vine, almond trees, living water, shepherd's staff, eternal lamp
+- `/sanctuary` command for discovery clues
+
+### Bosses
+| Boss | Command | Phases | Reward |
+|------|---------|--------|--------|
+| **The Ancient** | `/boss` | 3 (awakening → rage → cataclysm) | Sacred artifact drop |
+| **The Witch** | `/summon_witch` | 3 (summoning → shadows → poison cloud) | "Witch Hunter" achievement |
+
+### Villages & NPCs (12 Settlements)
+
+**Village Types:**
+`Fishing` `Mining` `Farming` `Fortified` `Religious` `Trading` `Academic` `Generic`
+
+**15 NPC Classes:**
+
+| Class | Role | Combat? |
+|-------|------|---------|
+| Survivor | Generic villager | No |
+| Soldier | Fights zombies | **Yes — 25 dmg** |
+| Guard Captain | Village defender | **Yes — 40 dmg** |
+| Hunter | Ranged fighter | **Yes — 35 dmg, 12-block range** |
+| Farmer | Sells food | No |
+| Weaponsmith | Sells ammo, upgrades | No |
+| Trader | General goods | No |
+| Healer | Removes poison, heals | No |
+| Librarian | Hints, lore | No |
+| Fisher / Miner / Bard / Alchemist / Innkeeper / Scholar / Elder | Village flavor | No |
+
+- NPCs follow players (`/follow_npc [id]`)
+- Familiarity system: repeated visits unlock better dialogue
+- 33% chance any NPC has a quest
+
+### Quests (8 Types)
+
+| Type | Description |
+|------|-------------|
+| Extermination | Kill N zombies |
+| Defense | Survive horde attack |
+| Pilgrimage | Reach coordinates |
+| Rescue | Save trapped survivor |
+| Retrieval | Find sacred relic |
+
+- 32 max concurrent quests
+- Rewards: materials + score
+- Commands: `/quests`, `/quest [id]`
+
+### World Events (8 Types)
+
+Random events with 5% trigger chance:
+- **Horde Attack** — Village under siege (2 min)
+- **Wandering Merchant** — Special trader spawns (5 min)
+- **Zombie Swarm** — Massive spawn nearby (1 min)
+- **Supply Drop** — Free materials (3 min)
+- **Dark Ritual** — Witch powers up (1.5 min)
+- **Survivor Rescue** — Trapped NPC needs help (4 min)
+
+Command: `/events`
+
+### Crafting (27 Items, 4 Tiers)
+
+| Tier | Examples | Cost |
+|------|----------|------|
+| Basic | Spike Trap, Field Ration, Explosive Ammo | 5–20 mats |
+| Intermediate | Fire Trap, Basic Turret, Light Armor | 30–50 mats |
+| Advanced | Heavy Turret, Heavy Armor, Molotov | 60–100 mats |
+| Expert | Sniper Turret, Nano Armor, Holy Grenade | 100–150 mats |
+
+Some recipes require a **Blacksmith** or **Alchemist** NPC nearby.
+
+Command: `/craft` for menu, `/craft [id]` to build.
+
+### Retro Hero Easter Eggs (0.1% Spawn)
+
+| Hero | Reference | Damage | Style |
+|------|-----------|--------|-------|
+| **Proto** | Mega Man | 75 | Ranged (arm cannon) |
+| **The Hero of Time** | Link | 100 | Melee (sword) |
+| **Bounty Hunter** | Samus | 90 | Ranged (missiles) |
+| **The Plumber** | Mario | 60 | Ranged (fireballs) |
+
+Command: `/heroes` to check status, `/follow` to recruit nearest.
+
+### Multiplayer & Teams
+
+- **Teams** — Up to 4 teams, 4 members each. Shared material pool.
+- **Player Trading** — Direct material/ammo/health transfer
+- **Emergency Revive** — Restore downed teammates (proximity check)
+- **SOS** — `/call_help` broadcasts coordinates
+
+Commands:
+```
+/team create [name]   /team join [id]   /team leave
+/deposit [n]          /withdraw [n]     /share [player] [amount]
+/call_help            /trade_req
+```
+
+### Save System
+
+Binary save format with CRC32 checksum. Persists:
+- Player stats, inventory, position
+- Village discoveries
+- Active quests
+- High scores
+- Boss states
+
+Commands: `/save`, `/load`, `/delete_save`
+
+---
+
+## ⌨️ Command Reference
+
+### Gameplay
+| Command | Function |
+|---------|----------|
+| `/start` | Begin game |
+| `/stop` | End game |
+| `/status` | Current game state |
+| `/wave` | Current wave info |
+| `/nextwave` | Force next wave |
+| `/difficulty [1-5]` | Set difficulty |
+
+### Weapons & Power-ups
+| Command | Function |
+|---------|----------|
+| `/weapon [1-7]` | Switch weapon |
+| `/ammo` | Current ammo |
+| `/weapons` | List weapons |
+| `/materials` | Material count |
+| `/perks` | Active perks |
+| `/upgrades` | Weapon upgrades |
+| `/nuke` | Clear all zombies |
+
+### Discovery & Lore
+| Command | Function |
+|---------|----------|
+| `/sanctuary` | The Father's House info |
+| `/hint` | Cryptic guidance |
+| `/lore` | Sacred symbols meaning |
+| `/discoveries` | Found items |
+
+### Villages & NPCs
+| Command | Function |
+|---------|----------|
+| `/villages` | List settlements |
+| `/npcs` | Nearby NPCs |
+| `/trade [id]` | Trade with NPC |
+| `/buy [id] [slot]` | Purchase from NPC |
+| `/follow_npc [id]` | Recruit NPC |
+| `/follow` | Recruit hero |
+| `/summon_witch` | Spawn Witch boss |
+| `/witch` | Witch status |
+| `/boss` | Summon Ancient |
+| `/heroes` | Hero status |
+
+### Quests & Events
+| Command | Function |
+|---------|----------|
+| `/quests` | Active quests |
+| `/quest [id]` | Accept quest |
+| `/events` | Active world events |
+
+### Crafting
+| Command | Function |
+|---------|----------|
+| `/craft` | Show crafting menu |
+| `/craft [id]` | Craft item |
+
+### Save
+| Command | Function |
+|---------|----------|
+| `/save` | Save game |
+| `/load` | Load saved game |
+| `/delete_save` | Delete save |
+
+### Multiplayer
+| Command | Function |
+|---------|----------|
+| `/team create [name]` | Create team |
+| `/team join [id]` | Join team |
+| `/team leave` | Leave team |
+| `/team list` | Show teams |
+| `/team info [id]` | Team details |
+| `/deposit [n]` | Pool materials |
+| `/withdraw [n]` | Take from pool |
+| `/share [p] [n]` | Give materials |
+| `/call_help` | SOS broadcast |
+| `/trade_req` | Pending requests |
+
+### Utility
+| Command | Function |
+|---------|----------|
+| `/help` | Full command list |
+| `/scores` | High scores |
+| `/map [file]` | Load custom map |
+| `/players` | Connected players |
+| `/me [msg]` | Emote |
+| `/time` | Server time |
+| `/seed` | World seed |
+| `/coords` | Your position |
+| `/difficulty` | Current difficulty |
+| `/modes` | Game modes |
+| `/survival` | Survival mode |
+| `/endless` | Endless mode |
+| `/horde` | Horde mode |
+| `/build` | Build mode |
+
+---
+
+## 🏗️ Architecture
+
+This project deliberately sacrifices vanilla compliance for extreme minimalism:
+
+- **No dimensions** — No Nether/End (would double binary size)
+- **No entity AI pathfinding** — NPCs use simple lerp follow
+- **No inventory system** — Weapons, ammo, materials are integers
+- **No block physics** — Static world, no redstone, no fluid flow
+- **No auth/encryption** — Open server, LAN-focused
+
+The result: a **227KB binary** that runs on ESP32, Termux, and any device with `gcc`.
+
+---
+
+## 🛠️ Compilation (Advanced)
+
+If you prefer manual compilation over `./install.sh`:
+
+### Prerequisites
+- `gcc` (any version)
+- `nodejs` (for registry generation)
+- Java 21+ (for Minecraft server JAR extraction)
+
+### Steps
+```bash
+# 1. Download Minecraft server JAR
+mkdir -p notchian
+curl -L -o notchian/server.jar \
+    https://piston-data.mojang.com/v1/objects/6bce4ef400e4efaa63a13d5e6f6b500be969ef81/server.jar
+
+# 2. Extract registry data
+cd notchian
+java -DbundlerMainClass="net.minecraft.data.Main" -jar server.jar --all
+cd ..
+
+# 3. Build C headers
+node build_registries.js
+
+# 4. Compile
+gcc src/*.c -O2 -Iinclude -o bareiron -lm
+
+# 5. Run
 ./bareiron
 ```
 
-That's it. The server listens on port 25565. Connect with Minecraft Java 1.21.8.
+### Platform Notes
 
-### Test Your Server
-
+**Termux (Android):**
 ```bash
-python3 test_server.py          # Test local connection
-python3 test_server.py IP PORT  # Test remote server
+pkg install gcc nodejs openjdk-21
+./install.sh
 ```
 
-### Quick Start Script
-
-If you've already run `./install.sh`, you can just run:
-
+**Windows (MSYS2):**
 ```bash
-./quickstart.sh   # Builds if needed, then starts server
+pacman -Sy mingw-w64-x86_64-gcc nodejs
+# Then follow manual steps above
 ```
 
-## Game Features (Enhanced Edition)
+**ESP32:**
+Set up PlatformIO with ESP-IDF framework. See upstream bareiron docs for details.
 
-This fork adds rich gameplay on top of the barebones server:
+---
 
-- **8 Zombie Types** — Walker, Runner, Tank, Boss, Crawler, Boomer, Spitter, Ninja
-- **6 Power-ups** — Insta-kill, Double Points, Nuke, Max Ammo, Carpenter, Speed Cola
-- **Barricade Building** — Build and repair defenses with materials
-- **7 Weapons** — Pistol, Shotgun, Assault Rifle, Sniper, SMG, LMG, RPG
-- **Wave Survival** — Escalating difficulty with boss every 5 waves
+## ⚙️ Configuration
 
-### Discoveries & Lore
-- **The Father's House** — Hidden sanctuary at (352, 33, -318). Safe zone with 7 biblical references. Type `/sanctuary` for clues.
-- **Advanced Gameplay** — Weapon upgrades, 8 perks (Juggernog, Speed Cola, Double Tap, Quick Revive, Stamin-Up, PhD Flopper, Deadshot, Mule Kick), discovery items
-- **The Ancient Boss** — 3-phase boss fight. Type `/boss` to summon
+Edit `include/globals.h` for:
+- WiFi credentials (ESP32)
+- Player slots, tick rate
+- Broadcast settings
+- Chest/fluid flow toggles
 
-### Villages & NPCs
-- **12 Villages** — Procedurally generated with unique types (Fishing, Mining, Farming, Fortified, Holy, Trade, Academic)
-- **15 NPC Classes** — Soldier, Farmer, Weaponsmith, Trader, Healer, Librarian, Fisher, Miner, Hunter, Guard Captain, Scholar, Bard, Alchemist, Innkeeper, Elder
-- **NPC Combat** — Soldiers and hunters fight zombies automatically
-- **Trading** — Buy ammo, health packs, materials from NPCs
-- **Witch Boss** — 3-phase boss with achievement. Type `/summon_witch`
-- **Retro Heroes** — Rare spawns: Mega Man, Link, Samus, Mario. Follow and fight for you.
+Edit `config/game.json` for:
+- Zombie spawn rates
+- Wave parameters
+- Difficulty scaling
 
-### Multiplayer & Teams
-- **Teams** — Create/join teams, shared material pool
-- **Player Trading** — Share materials, ammo, health
-- **Revive System** — Restore downed teammates
-- **Call for Help** — SOS broadcast with coordinates
+---
 
-### Quests & Events
-- **Quests** — 8 quest types. Type `/quests` to see active, `/quest [id]` to accept
-- **World Events** — Horde attacks, wandering merchants, supply drops, dark rituals. Type `/events`
+## 📁 File Map
 
-### Crafting
-- **27 Craftable Items** — Traps, turrets, armor, grenades, potions, charms. Type `/craft`
+```
+.
+├── bareiron                  # Server binary (generated)
+├── install.sh               # One-command installer
+├── quickstart.sh            # Fast build + run
+├── test_server.py           # Protocol tester
+│
+├── include/
+│   ├── registries.h         # Minecraft data (generated)
+│   ├── zombie_game.h        # Core game
+│   ├── fathers_house.h      # Sanctuary system
+│   ├── gameplay_expansion.h # Bosses, perks, upgrades
+│   ├── villages_npcs.h      # Villages, NPCs, Witch, Heroes
+│   ├── savegame.h           # Binary persistence
+│   ├── multiplayer.h        # Teams, trading, chat
+│   └── crafting_expansion.h # Crafting recipes
+│
+├── src/
+│   ├── *.c                  # All source files
+│   └── ...                  # Same filenames as headers
+│
+├── config/
+│   └── game.json            # Gameplay parameters
+│
+└── notchian/
+    └── server.jar           # Minecraft JAR (downloaded)
+```
 
-### Save System
-- **Persistent Save** — Binary save format. `/save`, `/load`, `/delete_save`
+---
 
-### Commands
-Type `/help` in-game for the full command list.
+## 🙏 Credits
 
-## Compilation (Advanced)
+- **Upstream:** [p2r3/bareiron](https://github.com/p2r3/bareiron) — The original memory-first Minecraft server
+- **This fork:** Enhanced by kaibuzz0 — Zombie shooter gameplay, NPCs, quests, crafting, saves, multiplayer
 
-Before compiling, you'll need to dump registry data from a vanilla Minecraft server. On Linux, this can be done automatically using the `extract_registries.sh` script. Otherwise, the manual process is as follows: create a folder called `notchian` here, and put a Minecraft server JAR in it. Then, follow [this guide](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Data_Generators) to dump all of the registries (use the _second_ command with the `--all` flag). Finally, run `build_registries.js` with either [bun](https://bun.sh/), [node](https://nodejs.org/en/download), or [deno](https://docs.deno.com/runtime/getting_started/installation/).
+## 📜 License
 
-- To compile on Linux, install `gcc` and run `./build.sh`.
-- For compiling on Windows, there are a few options:
-  - To compile a native Windows binary: install [MSYS2](https://www.msys2.org/) and open the "MSYS2 MINGW64" shell. From there, run `pacman -Sy mingw-w64-x86_64-gcc`, navigate to this project's directory, and run `./build.sh`.
-  - To compile a native 32-bit binary (compatible with Windows 95/98, but why would you ever want that), use the same steps above, except with `pacman -Sy mingw-w64-cross-gcc` and `./build.sh --9x`.
-  - To compile a MSYS2-linked binary: install [MSYS2](https://www.msys2.org/), and open the "MSYS2 MSYS" shell. From there, install `gcc` (run `pacman -Sy gcc`), navigate to this project's directory and run `./build.sh`. 
-  - To compile and run a Linux binary from Windows: install WSL, and from there install `gcc` and run `./build.sh` in this project's directory.
-- To target an ESP variant, set up a PlatformIO project (select the ESP-IDF framework, **not Arduino**) and clone this repository on top of it. See **Configuration** below for further steps. For better performance, consider changing the clock speed and enabling compiler optimizations. If you don't know how to do this, there are plenty of resources online.
+Same as upstream bareiron. See original repository for details.
 
-## Configuration
-Configuring the server requires compiling it from its source code as described in the section above.
+## 🤝 Contributing
 
-Most user-friendly configuration options are available in `include/globals.h`, including WiFi credentials for embedded setups. Some other details, like the MOTD or starting time of day, can be found in `src/globals.c`. For everything else, you'll have to dig through the code.
+This is a personal fork. For upstream contributions, see [p2r3/bareiron](https://github.com/p2r3/bareiron).
 
-Here's a summary of some of the more important yet less trivial options for those who plan to use this on a real microcontroller with real players:
-
-- Depending on the player count, the performance of the MCU, and the bandwidth of your network, player position broadcasting could potentially throttle your connection. If you find this to be the case, try commenting out `BROADCAST_ALL_MOVEMENT` and `SCALE_MOVEMENT_UPDATES_TO_PLAYER_COUNT`. This will tie movement to the tickrate. If this change makes movement too choppy, you can decrease `TIME_BETWEEN_TICKS` at the cost of more compute.
-- If you experience crashes or instability related to chests or water, those features can be disabled with `ALLOW_CHESTS` and `DO_FLUID_FLOW`, respectively.
-- If you find frequent repeated chunk generation to choke the server, increasing `VISITED_HISTORY` might help. There isn't _that_ much of a memory footprint for this - increasing it to `64` for example would only take up 240 extra bytes per allocated player.
-
-## Non-volatile storage (optional)
-This section applies to those who target ESP variants and wish to persist world data after a shutdown. *This is not necessary on PC platforms*, as world and player data is written to `world.bin` by default.
-
-The simplest way to accomplish this is to set up LittleFS in PlatformIO and comment out the `#ifndef` surrounding `SYNC_WORLD_TO_DISK` in `globals.h`. Since flash writes are typically slow and blocking, you'll likely want to uncomment `DISK_SYNC_BLOCKS_ON_INTERVAL`. Depending on the flash size of your board, you may also have to decrease `MAX_BLOCK_CHANGES`, so that the world data fits in your LittleFS partition.
-
-If using an SD card module or other virtual file system, you'll have to implement the filesystem setup routine on your own. The built-in serializer should still work though, as it uses POSIX filesystem calls.
-
-Alternatively, if you can't set up a file system, you can dump and upload world data over TCP. This can be enabled by uncommenting `DEV_ENABLE_BEEF_DUMPS` in `globals.h`. *Note: this system implements no security or authentication.* With this option enabled, anyone with access to the server can upload arbitrary world data.
-
-## Contribution
-- Create issues and discuss with the maintainer(s) before making pull requests. Even for small changes.
-- Follow the existing code style. Ensure that your changes fit in with the surrounding code, even if you disagree with the style. Pull requests with inconsistent style will be nitpicked.
-- Test your code before creating a pull request or requesting a review, regardless of how "simple" your change is. It's a basic form of respect towards the maintainer and reviewer.
-- Development tooling and compilation improvements _are not welcome,_ unless you've worked with the codebase long enough to have noticed practical shortcomings in that area. Adding a single compiler flag is not a meaningful first contribution.
-- For information on the Minecraft server protocol, [refer to the wiki](https://minecraft.wiki/w/Java_Edition_protocol/Packets). For everything else, use a [search engine](https://google.com).
+For this fork: open an issue if something's broken. Pull requests welcome but this is primarily a solo project.
