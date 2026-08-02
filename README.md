@@ -9,12 +9,83 @@ The goal of this project is to enable hosting Minecraft servers on very weak dev
 > [!WARNING]
 > Currently, only the vanilla client is officially supported. Issues have been reported when using Fabric or similar.
 
-## Quick start
-For PC x86_64 platforms, grab the [latest build binary](https://github.com/p2r3/bareiron/releases/download/latest/bareiron.exe) and run it. The file is a [Cosmopolitan polyglot](https://github.com/jart/cosmopolitan), which means it'll run on Windows, Linux, and possibly Mac, despite the file extension. Note that the server's default settings cannot be reconfigured without compiling from source.
+## Quick Start (One Command)
 
-For microcontrollers, see the section on **compilation** below.
+The easiest way to get running:
 
-## Compilation
+```bash
+# 1. Clone the repo
+git clone https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git
+cd Termux-Mobile-BAREIRON-server
+
+# 2. Run the installer (downloads Java 21 if needed, builds everything)
+./install.sh
+
+# 3. Start the server
+./bareiron
+```
+
+That's it. The server listens on port 25565. Connect with Minecraft Java 1.21.8.
+
+### Test Your Server
+
+```bash
+python3 test_server.py          # Test local connection
+python3 test_server.py IP PORT  # Test remote server
+```
+
+### Quick Start Script
+
+If you've already run `./install.sh`, you can just run:
+
+```bash
+./quickstart.sh   # Builds if needed, then starts server
+```
+
+## Game Features (Enhanced Edition)
+
+This fork adds rich gameplay on top of the barebones server:
+
+- **8 Zombie Types** — Walker, Runner, Tank, Boss, Crawler, Boomer, Spitter, Ninja
+- **6 Power-ups** — Insta-kill, Double Points, Nuke, Max Ammo, Carpenter, Speed Cola
+- **Barricade Building** — Build and repair defenses with materials
+- **7 Weapons** — Pistol, Shotgun, Assault Rifle, Sniper, SMG, LMG, RPG
+- **Wave Survival** — Escalating difficulty with boss every 5 waves
+
+### Discoveries & Lore
+- **The Father's House** — Hidden sanctuary at (352, 33, -318). Safe zone with 7 biblical references. Type `/sanctuary` for clues.
+- **Advanced Gameplay** — Weapon upgrades, 8 perks (Juggernog, Speed Cola, Double Tap, Quick Revive, Stamin-Up, PhD Flopper, Deadshot, Mule Kick), discovery items
+- **The Ancient Boss** — 3-phase boss fight. Type `/boss` to summon
+
+### Villages & NPCs
+- **12 Villages** — Procedurally generated with unique types (Fishing, Mining, Farming, Fortified, Holy, Trade, Academic)
+- **15 NPC Classes** — Soldier, Farmer, Weaponsmith, Trader, Healer, Librarian, Fisher, Miner, Hunter, Guard Captain, Scholar, Bard, Alchemist, Innkeeper, Elder
+- **NPC Combat** — Soldiers and hunters fight zombies automatically
+- **Trading** — Buy ammo, health packs, materials from NPCs
+- **Witch Boss** — 3-phase boss with achievement. Type `/summon_witch`
+- **Retro Heroes** — Rare spawns: Mega Man, Link, Samus, Mario. Follow and fight for you.
+
+### Multiplayer & Teams
+- **Teams** — Create/join teams, shared material pool
+- **Player Trading** — Share materials, ammo, health
+- **Revive System** — Restore downed teammates
+- **Call for Help** — SOS broadcast with coordinates
+
+### Quests & Events
+- **Quests** — 8 quest types. Type `/quests` to see active, `/quest [id]` to accept
+- **World Events** — Horde attacks, wandering merchants, supply drops, dark rituals. Type `/events`
+
+### Crafting
+- **27 Craftable Items** — Traps, turrets, armor, grenades, potions, charms. Type `/craft`
+
+### Save System
+- **Persistent Save** — Binary save format. `/save`, `/load`, `/delete_save`
+
+### Commands
+Type `/help` in-game for the full command list.
+
+## Compilation (Advanced)
+
 Before compiling, you'll need to dump registry data from a vanilla Minecraft server. On Linux, this can be done automatically using the `extract_registries.sh` script. Otherwise, the manual process is as follows: create a folder called `notchian` here, and put a Minecraft server JAR in it. Then, follow [this guide](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Data_Generators) to dump all of the registries (use the _second_ command with the `--all` flag). Finally, run `build_registries.js` with either [bun](https://bun.sh/), [node](https://nodejs.org/en/download), or [deno](https://docs.deno.com/runtime/getting_started/installation/).
 
 - To compile on Linux, install `gcc` and run `./build.sh`.
