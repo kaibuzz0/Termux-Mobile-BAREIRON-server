@@ -17,7 +17,7 @@ void spawn_wave_enhanced();
 void zombie_game_tick_enhanced();
 
 // Commands
-void handle_command_enhanced(const char* cmd);
+void handle_command_enhanced(const char* cmd, int player_id);
 void print_status();
 
 // Zombie types
