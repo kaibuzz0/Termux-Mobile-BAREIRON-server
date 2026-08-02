@@ -1,0 +1,28 @@
+{
+    "id": "dimension_nether_moria",
+    "name": "Nether Moria",
+    "type": "dimension",
+    "version": "1.0",
+    "author": "Bareiron Team",
+    "description": "A dark underground dimension of endless caverns, lava rivers, and ancient dwarven cities swallowed by corruption.",
+    "thumbnail": "nether_moria_thumb.png",
+    "mcVersion": "1.21.8",
+    "blockCount": 512,
+    "mobCount": 24,
+    "itemCount": 48,
+    "questCount": 20,
+    "structureCount": 15,
+    "dependencies": [],
+    "biomes": [
+        "ash_wastes",
+        "lava_seas",
+        "crystal_caverns",
+        "dwarven_ruins"
+    ],
+    "features": [
+        "heat_damage",
+        "lava_boats",
+        "dwarven_loot",
+        "balrog_boss"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "id": "addon_more_mobs",
+    "name": "Creature Compendium",
+    "type": "addon",
+    "version": "2.0",
+    "author": "Bareiron Community",
+    "description": "Adds 50+ new zombie variants: plague doctors, cyborg soldiers, radioactive mutants, vampire lords, and more. Each with unique abilities and drops.",
+    "thumbnail": "mobs_addon.png",
+    "mcVersion": "1.21.8",
+    "blockCount": 0,
+    "mobCount": 52,
+    "itemCount": 24,
+    "questCount": 0,
+    "structureCount": 0,
+    "dependencies": [],
+    "tags": ["mobs", "combat", "drops"]
+}

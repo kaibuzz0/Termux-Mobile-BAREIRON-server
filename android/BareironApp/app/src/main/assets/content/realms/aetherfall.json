@@ -1,0 +1,28 @@
+{
+    "id": "realm_aetherfall",
+    "name": "Aetherfall",
+    "type": "realm",
+    "version": "1.0",
+    "author": "Bareiron Team",
+    "description": "A floating sky kingdom shattered by war. Crystal islands drift among thunderclouds. Hostile winged serpents guard ancient ruins.",
+    "thumbnail": "aetherfall_thumb.png",
+    "mcVersion": "1.21.8",
+    "blockCount": 256,
+    "mobCount": 18,
+    "itemCount": 32,
+    "questCount": 12,
+    "structureCount": 8,
+    "dependencies": [],
+    "biomes": [
+        "floating_islands",
+        "thunder_peaks",
+        "crystal_gardens",
+        "ruined_sky_temples"
+    ],
+    "features": [
+        "gravity_pads",
+        "storm_events",
+        "crystal_crafting",
+        "wing_serpent_boss"
+    ]
+}

@@ -1,0 +1,18 @@
+// Top-level build file
+buildscript {
+    ext.kotlin_version = '1.9.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}

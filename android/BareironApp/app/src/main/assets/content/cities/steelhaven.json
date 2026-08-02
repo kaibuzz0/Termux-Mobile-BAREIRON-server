@@ -1,0 +1,29 @@
+{
+    "id": "city_steelhaven",
+    "name": "Steelhaven",
+    "type": "city",
+    "version": "1.0",
+    "author": "Bareiron Team",
+    "description": "A massive walled city built in a crater. Industrial district with factories, noble quarter with palaces, and an undercity full of smugglers and outcasts.",
+    "thumbnail": "steelhaven_thumb.png",
+    "mcVersion": "1.21.8",
+    "blockCount": 1024,
+    "mobCount": 32,
+    "itemCount": 64,
+    "questCount": 28,
+    "structureCount": 40,
+    "dependencies": [],
+    "districts": [
+        "industrial",
+        "noble_quarter",
+        "undercity",
+        "market",
+        "temple_district"
+    ],
+    "features": [
+        "faction_wars",
+        "black_market",
+        "crafting_guilds",
+        "arena_battles"
+    ]
+}

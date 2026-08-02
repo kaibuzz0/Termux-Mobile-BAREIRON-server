@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Bareiron" parent="Theme.MaterialComponents.Dark.NoActionBar">
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryVariant">#388E3C</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#FF9800</item>
+        <item name="colorSecondaryVariant">#F57C00</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:colorBackground">#121212</item>
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="colorError">#CF6679</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="android:statusBarColor">#121212</item>
+    </style>
+
+    <style name="Theme.Bareiron.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

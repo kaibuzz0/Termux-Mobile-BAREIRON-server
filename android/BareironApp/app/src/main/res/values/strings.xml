@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BAREIRON</string>
+    <string name="connect">Connect</string>
+    <string name="content_manager">Content Manager</string>
+    <string name="realms">Realms</string>
+    <string name="dimensions">Dimensions</string>
+    <string name="cities">Cities</string>
+    <string name="addons">Addons</string>
+    <string name="activate">Activate</string>
+    <string name="install">Install</string>
+    <string name="active">Active</string>
+</resources>
