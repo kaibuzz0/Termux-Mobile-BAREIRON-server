@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BAREIRON — Enhanced Zombie Shooter Edition</title>
+  <meta name="description" content="BAREIRON: a minimalist Minecraft Java 1.21.8 zombie survival shooter server for Termux, Linux, and MSYS2.">
+  <link rel="stylesheet" href="assets/css/bareiron.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">BAREIRON</span>
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-text">PROTOCOL 772 // MC 1.21.8</span>
+      <nav class="topbar-nav" aria-label="Page sections">
+        <a href="#features">Features</a>
+        <a href="#install">Install</a>
+        <a href="#commands">Commands</a>
+        <a href="#architecture">Built Different</a>
+        <a href="https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-badge" aria-hidden="true">
+          <div class="pixel-skull">
+            <div class="skull-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="skull-row"><span></span><span></span><span class="eye"></span><span></span><span></span><span class="eye"></span><span></span><span></span></div>
+            <div class="skull-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="skull-row"><span></span><span></span><span></span><span class="nose"></span><span class="nose"></span><span></span><span></span><span></span></div>
+            <div class="skull-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="skull-row"><span class="teeth"></span><span class="teeth"></span><span class="teeth"></span><span class="teeth"></span><span class="teeth"></span><span class="teeth"></span><span class="teeth"></span><span class="teeth"></span></div>
+            <div class="skull-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">TERMINAL / SURVIVAL / SHOOTER</p>
+          <h1 id="hero-title">BAREIRON</h1>
+          <h2>Enhanced Zombie Shooter Edition</h2>
+          <p class="tagline">A tiny server. A hostile world. Survive the night.</p>
+
+          <div class="hud-panel" aria-label="Verified server specification">
+            <div class="hud-row">
+              <span class="hud-label">MINECRAFT</span>
+              <span class="hud-value mc-value">1.21.8</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">PROTOCOL</span>
+              <span class="hud-value">772</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">BINARY</span>
+              <span class="hud-value">~227 KB</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">PLAYERS</span>
+              <span class="hud-value">8 MAX</span>
+            </div>
+            <div class="hud-row">
+              <span class="hud-label">RUNTIME</span>
+              <span class="hud-value">TERMUX / LINUX</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#install">START SERVER</a>
+            <a class="btn btn-ghost" href="#quickstart">QUICK INSTALL</a>
+            <a class="btn btn-ghost" href="https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server" target="_blank" rel="noopener noreferrer">VIEW SOURCE</a>
+            <a class="btn btn-ghost" href="#features">GAME FEATURES</a>
+            <a class="btn btn-ghost" href="#commands">COMMANDS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-quickstart" id="quickstart" aria-labelledby="quickstart-title">
+      <div class="section-inner">
+        <h2 id="quickstart-title" class="section-title"><span class="title-icon">&gt;_</span> Quick Start</h2>
+        <p class="section-subtitle">Verified three-step flow from the repository README.</p>
+
+        <div class="terminal">
+          <div class="terminal-header" aria-hidden="true">
+            <span class="term-dot red"></span>
+            <span class="term-dot amber"></span>
+            <span class="term-dot green"></span>
+            <span class="term-title">bareiron_installer</span>
+          </div>
+          <div class="terminal-body">
+            <div class="term-line">
+              <span class="term-prompt">$</span>
+              <code id="cmd-clone">git clone https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git</code>
+              <button class="copy-btn" type="button" data-target="cmd-clone" aria-label="Copy clone command">COPY</button>
+            </div>
+            <div class="term-line">
+              <span class="term-prompt">$</span>
+              <code id="cmd-cd">cd Termux-Mobile-BAREIRON-server</code>
+              <button class="copy-btn" type="button" data-target="cmd-cd" aria-label="Copy cd command">COPY</button>
+            </div>
+            <div class="term-line">
+              <span class="term-prompt">$</span>
+              <code id="cmd-install">./install.sh</code>
+              <button class="copy-btn" type="button" data-target="cmd-install" aria-label="Copy install command">COPY</button>
+            </div>
+            <div class="term-line">
+              <span class="term-prompt">$</span>
+              <code id="cmd-run">./quickstart.sh</code>
+              <button class="copy-btn" type="button" data-target="cmd-run" aria-label="Copy run command">COPY</button>
+            </div>
+            <div class="term-line term-output" aria-live="polite">
+              <span class="term-comment"># Server listens on port 25565. Connect with Minecraft Java 1.21.8.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="verify-box">
+          <p><strong>Verify it's working:</strong></p>
+          <div class="term-line inline">
+            <code id="cmd-verify">python3 test_server.py</code>
+            <button class="copy-btn" type="button" data-target="cmd-verify" aria-label="Copy verify command">COPY</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-features" id="features" aria-labelledby="features-title">
+      <div class="section-inner">
+        <h2 id="features-title" class="section-title"><span class="title-icon">⚠</span> Gameplay Systems</h2>
+
+        <div class="card-grid">
+          <article class="feature-card">
+            <h3>Zombie Waves</h3>
+            <p>Escalating survival waves with a boss encounter every 5 waves. Build barricades, scavenge materials, and hold the line.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Zombie Types</h3>
+            <ul class="type-list">
+              <li><span class="type-tag walker">Walker</span></li>
+              <li><span class="type-tag runner">Runner</span></li>
+              <li><span class="type-tag tank">Tank</span></li>
+              <li><span class="type-tag boss">Boss</span></li>
+              <li><span class="type-tag crawler">Crawler</span></li>
+              <li><span class="type-tag boomer">Boomer</span></li>
+              <li><span class="type-tag spitter">Spitter</span></li>
+              <li><span class="type-tag ninja">Ninja</span></li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <h3>Weapons</h3>
+            <ul class="stat-list">
+              <li><span class="stat-name">Pistol</span><span class="stat-bar"><span style="width:30%"></span></span></li>
+              <li><span class="stat-name">Shotgun</span><span class="stat-bar"><span style="width:55%"></span></span></li>
+              <li><span class="stat-name">Rifle</span><span class="stat-bar"><span style="width:45%"></span></span></li>
+              <li><span class="stat-name">Minigun</span><span class="stat-bar"><span style="width:70%"></span></span></li>
+              <li><span class="stat-name">Grenade</span><span class="stat-bar"><span style="width:90%"></span></span></li>
+              <li><span class="stat-name">RPG</span><span class="stat-bar"><span style="width:95%"></span></span></li>
+              <li><span class="stat-name">Sniper</span><span class="stat-bar"><span style="width:75%"></span></span></li>
+            </ul>
+            <p class="card-note">README lists 7 weapons; source enumerates 7 slots (Pistol, Shotgun, Rifle, Minigun, Grenade, RPG, Sniper).</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Power-ups</h3>
+            <div class="powerup-grid">
+              <span class="chip">Health</span>
+              <span class="chip">Ammo</span>
+              <span class="chip">Speed</span>
+              <span class="chip">Damage</span>
+              <span class="chip">Invincible</span>
+              <span class="chip nuke">NUKE</span>
+            </div>
+            <p class="card-note">Source exposes 6 power-up types. README also names Insta-kill, Double Points, Carpenter, Max Ammo, and Speed Cola as in-game language.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-bosses" id="bosses" aria-labelledby="bosses-title">
+      <div class="section-inner">
+        <h2 id="bosses-title" class="section-title"><span class="title-icon">☠</span> Boss Encounters</h2>
+        <div class="boss-grid">
+          <article class="boss-card">
+            <div class="boss-header">
+              <h3>The Ancient</h3>
+              <span class="boss-cmd">/boss</span>
+            </div>
+            <div class="health-bar" aria-hidden="true"><span style="width:100%"></span></div>
+            <ol class="phase-list">
+              <li><strong>Phase 1:</strong> Summoning — raises minions.</li>
+              <li><strong>Phase 2:</strong> Rage — speed and damage doubled at 50% health.</li>
+              <li><strong>Phase 3:</strong> Desperation — explodes on death; drops sacred artifact.</li>
+            </ol>
+          </article>
+
+          <article class="boss-card witch">
+            <div class="boss-header">
+              <h3>The Witch</h3>
+              <span class="boss-cmd">/summon_witch</span>
+            </div>
+            <div class="health-bar witch-bar" aria-hidden="true"><span style="width:100%"></span></div>
+            <ol class="phase-list">
+              <li><strong>Phase 1:</strong> Summoning — poison vials.</li>
+              <li><strong>Phase 2:</strong> Shadows — commands shadow swarm.</li>
+              <li><strong>Phase 3:</strong> Desperation — poison cloud spreads.</li>
+            </ol>
+            <p class="reward">Reward: <strong>Witch Hunter</strong> achievement</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-sanctuary" id="sanctuary" aria-labelledby="sanctuary-title">
+      <div class="section-inner sanctuary-inner">
+        <div class="sanctuary-glow" aria-hidden="true"></div>
+        <h2 id="sanctuary-title" class="section-title sanctuary-title">The Father's House</h2>
+        <p class="section-subtitle">Somewhere in the dead world, there is still sanctuary.</p>
+        <div class="sanctuary-panel">
+          <p class="classified">LOCATION: <span>CLASSIFIED</span></p>
+          <p>Discover it through in-world clues with <code>/hint</code> and <code>/sanctuary</code>. Once found, it grants a protected radius where hostile mobs cannot spawn.</p>
+          <p class="card-note">The source hardcodes coordinates, but the site treats them as a discovery mechanic to avoid spoiling the exploration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-villages" id="villages" aria-labelledby="villages-title">
+      <div class="section-inner">
+        <h2 id="villages-title" class="section-title"><span class="title-icon">⌂</span> Villages &amp; NPCs</h2>
+        <p class="section-subtitle">12 procedurally placed settlements, 8 village types, 15 NPC classes.</p>
+
+        <div class="card-grid rpg-grid">
+          <article class="feature-card">
+            <h3>Village Types</h3>
+            <ul class="type-list compact">
+              <li><span class="type-tag">Fishing</span></li>
+              <li><span class="type-tag">Mining</span></li>
+              <li><span class="type-tag">Farming</span></li>
+              <li><span class="type-tag">Fortified</span></li>
+              <li><span class="type-tag">Religious</span></li>
+              <li><span class="type-tag">Trading</span></li>
+              <li><span class="type-tag">Academic</span></li>
+              <li><span class="type-tag">Generic</span></li>
+            </ul>
+          </article>
+
+          <article class="feature-card wide">
+            <h3>NPC Classes</h3>
+            <ul class="npc-list">
+              <li>Survivor</li>
+              <li>Soldier</li>
+              <li>Farmer</li>
+              <li>Weaponsmith</li>
+              <li>Trader</li>
+              <li>Healer</li>
+              <li>Librarian</li>
+              <li>Child</li>
+              <li>Elder</li>
+              <li>Fisher</li>
+              <li>Miner</li>
+              <li>Hunter</li>
+              <li>Guard Captain</li>
+              <li>Scholar</li>
+              <li>Bard</li>
+              <li>Alchemist</li>
+              <li>Innkeeper</li>
+            </ul>
+            <p class="card-note">Source counts 15 core classes (some entries overlap with hero/boss classes). README advertises 15 NPC classes.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>RPG Systems</h3>
+            <ul class="bullet-list">
+              <li>Repeated visits improve NPC familiarity</li>
+              <li>33% chance any NPC offers a quest</li>
+              <li>Buy, trade, and recruit NPCs</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-quests" id="quests" aria-labelledby="quests-title">
+      <div class="section-inner">
+        <h2 id="quests-title" class="section-title"><span class="title-icon">!</span> Quests &amp; World Events</h2>
+
+        <div class="card-grid">
+          <article class="feature-card">
+            <h3>Quest Types</h3>
+            <ul class="bullet-list">
+              <li>Extermination — Kill N zombies</li>
+              <li>Defense — Survive a horde attack</li>
+              <li>Pilgrimage — Reach coordinates</li>
+              <li>Rescue — Save a trapped survivor</li>
+              <li>Retrieval — Find a sacred relic</li>
+            </ul>
+            <p class="card-note">README lists 8 quest types; source code confirms at least these 5 plus procedural variants.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>World Events</h3>
+            <ul class="bullet-list">
+              <li>Horde Attack</li>
+              <li>Wandering Merchant</li>
+              <li>Zombie Swarm</li>
+              <li>Supply Drop</li>
+              <li>Dark Ritual</li>
+              <li>Survivor Rescue</li>
+            </ul>
+            <p class="card-note">Random 5% trigger chance per README. Command: <code>/events</code>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-crafting" id="crafting" aria-labelledby="crafting-title">
+      <div class="section-inner">
+        <h2 id="crafting-title" class="section-title"><span class="title-icon">▦</span> Crafting</h2>
+        <p class="section-subtitle">Source exposes 32 recipe slots across 4 tiers. README advertises 27 items / 4 tiers.</p>
+
+        <div class="tier-grid">
+          <article class="tier-card basic">
+            <h3>Basic</h3>
+            <ul>
+              <li>Spike Trap</li>
+              <li>Field Ration</li>
+              <li>Explosive Ammo</li>
+            </ul>
+            <span class="cost">5–20 mats</span>
+          </article>
+          <article class="tier-card intermediate">
+            <h3>Intermediate</h3>
+            <ul>
+              <li>Fire Trap</li>
+              <li>Basic Turret</li>
+              <li>Light Armor</li>
+            </ul>
+            <span class="cost">30–50 mats</span>
+          </article>
+          <article class="tier-card advanced">
+            <h3>Advanced</h3>
+            <ul>
+              <li>Heavy Turret</li>
+              <li>Heavy Armor</li>
+              <li>Molotov</li>
+            </ul>
+            <span class="cost">60–100 mats</span>
+          </article>
+          <article class="tier-card expert">
+            <h3>Expert</h3>
+            <ul>
+              <li>Sniper Turret</li>
+              <li>Nano Armor</li>
+              <li>Holy Grenade</li>
+            </ul>
+            <span class="cost">100–150 mats</span>
+          </article>
+        </div>
+        <p class="card-note center">Some expert recipes require a Blacksmith or Alchemist NPC nearby. Use <code>/craft</code> for the menu or <code>/craft [id]</code> to build.</p>
+      </div>
+    </section>
+
+    <section class="section section-heroes" id="heroes" aria-labelledby="heroes-title">
+      <div class="section-inner">
+        <h2 id="heroes-title" class="section-title"><span class="title-icon">?</span> Retro Hero Easter Eggs</h2>
+        <p class="section-subtitle">0.1% spawn chance. Generic names only — no official artwork or affiliation.</p>
+        <div class="hero-silhouettes">
+          <div class="silhouette"><span class="hero-name">Proto</span></div>
+          <div class="silhouette"><span class="hero-name">The Hero</span></div>
+          <div class="silhouette"><span class="hero-name">Bounty Hunter</span></div>
+          <div class="silhouette"><span class="hero-name">The Plumber</span></div>
+        </div>
+        <p class="card-note center">Source code uses generic hero identifiers. The website uses text silhouettes and avoids copyrighted character artwork.</p>
+      </div>
+    </section>
+
+    <section class="section section-multiplayer" id="multiplayer" aria-labelledby="multiplayer-title">
+      <div class="section-inner">
+        <h2 id="multiplayer-title" class="section-title"><span class="title-icon">⇄</span> Multiplayer</h2>
+        <div class="card-grid">
+          <article class="feature-card">
+            <h3>Teams</h3>
+            <p>Up to 4 teams. Shared material pool. Deposit/withdraw with <code>/deposit</code> and <code>/withdraw</code>.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Trading</h3>
+            <p>Direct material/ammo/health transfer. <code>/trade_req</code> and <code>/share [player] [amount]</code>.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Revive</h3>
+            <p>Emergency revive restores downed teammates with a proximity check.</p>
+          </article>
+          <article class="feature-card">
+            <h3>SOS</h3>
+            <p><code>/call_help</code> broadcasts your coordinates to other players.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-save" id="save" aria-labelledby="save-title">
+      <div class="section-inner">
+        <h2 id="save-title" class="section-title"><span class="title-icon">💾</span> Save System</h2>
+        <div class="save-card">
+          <div class="floppy" aria-hidden="true">
+            <div class="floppy-shutter"></div>
+            <div class="floppy-label">SAVE.DAT</div>
+          </div>
+          <div class="save-body">
+            <p>Binary save format with CRC32 checksum. Persists across restarts:</p>
+            <ul class="bullet-list">
+              <li>Player stats, inventory, and position</li>
+              <li>Village discoveries and danger levels</li>
+              <li>Active quests</li>
+              <li>High scores</li>
+              <li>Boss states</li>
+            </ul>
+            <div class="save-cmds">
+              <code>/save</code> <code>/load</code> <code>/delete_save</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-commands" id="commands" aria-labelledby="commands-title">
+      <div class="section-inner">
+        <h2 id="commands-title" class="section-title"><span class="title-icon">&gt;_</span> Command Terminal</h2>
+        <p class="section-subtitle">Representative commands verified against the source. Type <code>/help</code> in-game for the full list.</p>
+
+        <div class="terminal command-terminal">
+          <div class="terminal-header" aria-hidden="true">
+            <span class="term-dot red"></span>
+            <span class="term-dot amber"></span>
+            <span class="term-dot green"></span>
+            <span class="term-title">bareiron_console</span>
+          </div>
+          <div class="terminal-body">
+            <div class="cmd-col">
+              <h4>Gameplay</h4>
+              <ul>
+                <li><code>/start</code></li>
+                <li><code>/status</code></li>
+                <li><code>/wave</code></li>
+                <li><code>/difficulty [1-5]</code></li>
+              </ul>
+            </div>
+            <div class="cmd-col">
+              <h4>Combat</h4>
+              <ul>
+                <li><code>/weapon [0-6]</code></li>
+                <li><code>/ammo</code></li>
+                <li><code>/materials</code></li>
+                <li><code>/nuke</code></li>
+              </ul>
+            </div>
+            <div class="cmd-col">
+              <h4>World</h4>
+              <ul>
+                <li><code>/villages</code></li>
+                <li><code>/npcs</code></li>
+                <li><code>/trade [id]</code></li>
+                <li><code>/follow_npc [id]</code></li>
+              </ul>
+            </div>
+            <div class="cmd-col">
+              <h4>Progression</h4>
+              <ul>
+                <li><code>/quests</code></li>
+                <li><code>/events</code></li>
+                <li><code>/craft</code></li>
+                <li><code>/sanctuary</code></li>
+              </ul>
+            </div>
+            <div class="cmd-col">
+              <h4>Multiplayer</h4>
+              <ul>
+                <li><code>/team create [name]</code></li>
+                <li><code>/deposit [n]</code></li>
+                <li><code>/call_help</code></li>
+                <li><code>/trade_req</code></li>
+              </ul>
+            </div>
+            <div class="cmd-col">
+              <h4>Save</h4>
+              <ul>
+                <li><code>/save</code></li>
+                <li><code>/load</code></li>
+                <li><code>/delete_save</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="card-note center">See the <a href="https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server#-command-reference" target="_blank" rel="noopener noreferrer">README command reference</a> for every supported slash command.</p>
+      </div>
+    </section>
+
+    <section class="section section-architecture" id="architecture" aria-labelledby="architecture-title">
+      <div class="section-inner">
+        <h2 id="architecture-title" class="section-title"><span class="title-icon">⚙</span> Built Different</h2>
+        <p class="section-subtitle">Why the binary stays ~227 KB.</p>
+
+        <div class="diff-grid">
+          <div class="diff-card">
+            <h3>No Dimensions</h3>
+            <p>No Nether or End. Keeps the world generator and protocol surface small.</p>
+          </div>
+          <div class="diff-card">
+            <h3>Simple NPC Movement</h3>
+            <p>No full entity pathfinding. NPCs use simple follow logic.</p>
+          </div>
+          <div class="diff-card">
+            <h3>Integer Inventory</h3>
+            <p>Weapons, ammo, and materials are tracked as integers rather than a full item system.</p>
+          </div>
+          <div class="diff-card">
+            <h3>Static World</h3>
+            <p>No block physics, redstone, or fluid flow. The world is static and cheap to serve.</p>
+          </div>
+        </div>
+
+        <div class="warning-panel" id="security-warning">
+          <h3><span class="blink" aria-hidden="true">⚠</span> Network Warning</h3>
+          <p><strong>No authentication. No encryption.</strong></p>
+          <p>This is an open server designed for trusted LAN or private network play. Do not expose it directly to the public internet without appropriate network protections.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-install" id="install" aria-labelledby="install-title">
+      <div class="section-inner">
+        <h2 id="install-title" class="section-title"><span class="title-icon">⬇</span> Install</h2>
+
+        <div class="platform-tabs" role="tablist" aria-label="Install platform">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-termux" id="tab-btn-termux">Termux / Android</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-linux" id="tab-btn-linux">Linux</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-windows" id="tab-btn-windows">Windows / MSYS2</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-esp32" id="tab-btn-esp32">ESP32</button>
+        </div>
+
+        <div class="tab-panels">
+          <div id="tab-termux" class="tab-panel active" role="tabpanel" aria-labelledby="tab-btn-termux">
+            <div class="terminal">
+              <div class="terminal-header" aria-hidden="true"><span class="term-title">termux_setup.sh</span></div>
+              <div class="terminal-body">
+                <div class="term-line"><span class="term-prompt">$</span><code id="termux-pkg">pkg install gcc nodejs openjdk-21</code><button class="copy-btn" data-target="termux-pkg">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="termux-clone">git clone https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git</code><button class="copy-btn" data-target="termux-clone">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="termux-cd">cd Termux-Mobile-BAREIRON-server</code><button class="copy-btn" data-target="termux-cd">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="termux-install">./install.sh</code><button class="copy-btn" data-target="termux-install">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="termux-run">./quickstart.sh</code><button class="copy-btn" data-target="termux-run">COPY</button></div>
+              </div>
+            </div>
+            <p class="card-note">README primary platform. Verified install script flow.</p>
+          </div>
+
+          <div id="tab-linux" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-linux" hidden>
+            <div class="terminal">
+              <div class="terminal-header" aria-hidden="true"><span class="term-title">linux_setup.sh</span></div>
+              <div class="terminal-body">
+                <div class="term-line"><span class="term-prompt">$</span><code id="linux-apt">sudo apt install gcc nodejs openjdk-21-jdk</code><button class="copy-btn" data-target="linux-apt">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="linux-clone">git clone https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git</code><button class="copy-btn" data-target="linux-clone">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="linux-cd">cd Termux-Mobile-BAREIRON-server</code><button class="copy-btn" data-target="linux-cd">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="linux-install">./install.sh</code><button class="copy-btn" data-target="linux-install">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="linux-run">./quickstart.sh</code><button class="copy-btn" data-target="linux-run">COPY</button></div>
+              </div>
+            </div>
+            <p class="card-note">install.sh targets Linux x64 / aarch64. Java 21 downloaded automatically if missing.</p>
+          </div>
+
+          <div id="tab-windows" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-windows" hidden>
+            <div class="terminal">
+              <div class="terminal-header" aria-hidden="true"><span class="term-title">msys2_setup.sh</span></div>
+              <div class="terminal-body">
+                <div class="term-line"><span class="term-prompt">$</span><code id="win-pacman">pacman -Sy mingw-w64-x86_64-gcc nodejs</code><button class="copy-btn" data-target="win-pacman">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="win-clone">git clone https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server.git</code><button class="copy-btn" data-target="win-clone">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="win-cd">cd Termux-Mobile-BAREIRON-server</code><button class="copy-btn" data-target="win-cd">COPY</button></div>
+                <div class="term-line"><span class="term-prompt">$</span><code id="win-build">./build.sh</code><button class="copy-btn" data-target="win-build">COPY</button></div>
+              </div>
+            </div>
+            <p class="card-note">README documents Windows under MSYS2 only. build.sh includes MINGW64 linker flags.</p>
+          </div>
+
+          <div id="tab-esp32" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-esp32" hidden>
+            <p class="card-note">README mentions ESP32 as a supported target and points to upstream bareiron docs for PlatformIO setup. No verified one-liner exists in this repository.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-footer">
+      <div class="section-inner">
+        <p class="footer-line">
+          Upstream: <a href="https://github.com/p2r3/bareiron" target="_blank" rel="noopener noreferrer">p2r3/bareiron</a>
+          &nbsp;|&nbsp;
+          Fork: <a href="https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server" target="_blank" rel="noopener noreferrer">kaibuzz0/Termux-Mobile-BAREIRON-server</a>
+        </p>
+        <p class="footer-line small">Static site built from verified README and source code. No trackers. No cookies. No backend.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/bareiron.js"></script>
+</body>
+</html>
