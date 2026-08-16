@@ -1,0 +1,48 @@
+name: Publish command-site snapshot
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: command-site-snapshot
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate bounded snapshot
+        env:
+          COMMAND_SITE_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          curl --fail --silent --show-error --location --output /tmp/export_repo_snapshot.py https://raw.githubusercontent.com/kaibuzz0/Git-hub-command-site/131fb04af009bddaaf173711b6e31c3f651210b4/connectors/export_repo_snapshot.py
+          python /tmp/export_repo_snapshot.py --output /tmp/repo-snapshot.json
+      - name: Publish generated snapshot branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin command-site-data >/dev/null 2>&1; then
+            git fetch origin command-site-data
+            git switch --detach FETCH_HEAD
+          else
+            git switch --orphan command-site-data
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+          cp /tmp/repo-snapshot.json repo-snapshot.json
+          git add repo-snapshot.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore(command-site): refresh snapshot"
+          git push origin HEAD:command-site-data
