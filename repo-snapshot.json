@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-16T23:58:17Z",
+  "source_commit": "1f303ed69f40fe9bd1ecb448350834ebc06fd42b",
+  "repo": {
+    "id": "termux-mobile-bareiron-server",
+    "full_name": "kaibuzz0/Termux-Mobile-BAREIRON-server",
+    "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server",
+    "default_branch": "main"
+  },
+  "stats": {
+    "tracked_files": 86,
+    "python_files": 1,
+    "javascript_typescript_files": 2,
+    "workflow_files": 2,
+    "test_files": 1
+  },
+  "tools": [],
+  "toolsets": [],
+  "cases": [],
+  "opportunities": [],
+  "intelligence": [],
+  "sources": [],
+  "prompts": [],
+  "evidence": [],
+  "agent_ops": {},
+  "activity": [
+    {
+      "id": "1f303ed69f40fe9bd1ecb448350834ebc06fd42b",
+      "type": "commit",
+      "title": "Connect repository to GitHub Command Site",
+      "timestamp": "2026-08-16T18:58:09-05:00",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/1f303ed69f40fe9bd1ecb448350834ebc06fd42b"
+    },
+    {
+      "id": "5d8ba5d61b881a6977be6edbb4a6388f9daf97fe",
+      "type": "commit",
+      "title": "feat(website): add static GitHub Pages site for bareiron",
+      "timestamp": "2026-08-14T17:28:13-05:00",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/5d8ba5d61b881a6977be6edbb4a6388f9daf97fe"
+    },
+    {
+      "id": "38f8d874ae14cb7ac83c31b3c53667d71cd40fc7",
+      "type": "commit",
+      "title": "feat: Android Content Manager app \u2014 Realms, Dimensions, Cities, Add-ons",
+      "timestamp": "2026-08-02T17:57:43Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/38f8d874ae14cb7ac83c31b3c53667d71cd40fc7"
+    },
+    {
+      "id": "50c23d62a5c9c1664bf310c0a01e3b2653ce47b1",
+      "type": "commit",
+      "title": "docs: Complete README rewrite with full feature documentation",
+      "timestamp": "2026-08-02T16:42:44Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/50c23d62a5c9c1664bf310c0a01e3b2653ce47b1"
+    },
+    {
+      "id": "b6f146ca939084880a070df87ac81ecb9837444d",
+      "type": "commit",
+      "title": "feat: Easy install, run, and test scripts + updated README",
+      "timestamp": "2026-08-02T16:37:29Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/b6f146ca939084880a070df87ac81ecb9837444d"
+    },
+    {
+      "id": "132d138c72b9bc5ba32953c024032807d88ffc57",
+      "type": "commit",
+      "title": "feat: Save/load, multiplayer teams, crafting expansion",
+      "timestamp": "2026-08-02T16:27:58Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/132d138c72b9bc5ba32953c024032807d88ffc57"
+    },
+    {
+      "id": "1107e8ffcfa4f514fd1a9c260761142f0ec3fc56",
+      "type": "commit",
+      "title": "feat: More villages, NPC combat, quest system, world events, header cleanup",
+      "timestamp": "2026-08-02T16:16:50Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/1107e8ffcfa4f514fd1a9c260761142f0ec3fc56"
+    },
+    {
+      "id": "4938a232392dcb7d00bfef9c8489ca0e1f1541dd",
+      "type": "commit",
+      "title": "feat: NPC pathfinding, trading, hero combat, header cleanup",
+      "timestamp": "2026-08-02T15:52:38Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/4938a232392dcb7d00bfef9c8489ca0e1f1541dd"
+    },
+    {
+      "id": "bf66088a7212f16feacc62e446bd9288d196b275",
+      "type": "commit",
+      "title": "feat: Villages, NPCs, Witch Boss, and Retro Hero Easter Eggs",
+      "timestamp": "2026-08-02T15:37:47Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/bf66088a7212f16feacc62e446bd9288d196b275"
+    },
+    {
+      "id": "ba2db2244b80f2456147d1bee4b5ce9d8070d87d",
+      "type": "commit",
+      "title": "feat: Advanced gameplay expansion \u2014 The Ancient boss, weapon upgrades, perks, discovery items",
+      "timestamp": "2026-08-02T14:59:37Z",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/ba2db2244b80f2456147d1bee4b5ce9d8070d87d"
+    }
+  ],
+  "links": [
+    {
+      "id": "github",
+      "name": "GitHub repository",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server"
+    },
+    {
+      "id": "actions",
+      "name": "GitHub Actions",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/actions"
+    },
+    {
+      "id": "issues",
+      "name": "Issues",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/issues"
+    }
+  ]
+}
