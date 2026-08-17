@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-16T23:58:17Z",
-  "source_commit": "1f303ed69f40fe9bd1ecb448350834ebc06fd42b",
+  "generated_at": "2026-08-17T00:18:25Z",
+  "source_commit": "7f5220d0a5a9cf9d05ae945797bdf726e34aefa5",
   "repo": {
     "id": "termux-mobile-bareiron-server",
     "full_name": "kaibuzz0/Termux-Mobile-BAREIRON-server",
@@ -15,6 +15,652 @@
     "workflow_files": 2,
     "test_files": 1
   },
+  "repository_tree": {
+    "total_files": 86,
+    "total_directories": 31,
+    "files_truncated": false,
+    "directories_truncated": false,
+    "top_level": [
+      ".github",
+      ".gitignore",
+      "GAME_READY.txt",
+      "LICENSE",
+      "README.md",
+      "SETUP_REPORT.txt",
+      "android",
+      "build.sh",
+      "build_registries.js",
+      "config",
+      "docs",
+      "extract_registries.sh",
+      "include",
+      "install.sh",
+      "maps",
+      "quickstart.sh",
+      "src",
+      "test_server.py"
+    ],
+    "directories": [
+      {
+        "path": ".github",
+        "name": ".github",
+        "depth": 1,
+        "file_count": 5
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE",
+        "name": "ISSUE_TEMPLATE",
+        "depth": 2,
+        "file_count": 3
+      },
+      {
+        "path": ".github/workflows",
+        "name": "workflows",
+        "depth": 2,
+        "file_count": 2
+      },
+      {
+        "path": "android",
+        "name": "android",
+        "depth": 1,
+        "file_count": 28
+      },
+      {
+        "path": "android/BareironApp",
+        "name": "BareironApp",
+        "depth": 2,
+        "file_count": 26
+      },
+      {
+        "path": "android/BareironApp/app",
+        "name": "app",
+        "depth": 3,
+        "file_count": 22
+      },
+      {
+        "path": "android/BareironApp/app/src",
+        "name": "src",
+        "depth": 4,
+        "file_count": 21
+      },
+      {
+        "path": "android/BareironApp/app/src/main",
+        "name": "main",
+        "depth": 5,
+        "file_count": 21
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets",
+        "name": "assets",
+        "depth": 6,
+        "file_count": 4
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content",
+        "name": "content",
+        "depth": 7,
+        "file_count": 4
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/addons",
+        "name": "addons",
+        "depth": 8,
+        "file_count": 1
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/cities",
+        "name": "cities",
+        "depth": 8,
+        "file_count": 1
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/dimensions",
+        "name": "dimensions",
+        "depth": 8,
+        "file_count": 1
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/realms",
+        "name": "realms",
+        "depth": 8,
+        "file_count": 1
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java",
+        "name": "java",
+        "depth": 6,
+        "file_count": 9
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com",
+        "name": "com",
+        "depth": 7,
+        "file_count": 9
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron",
+        "name": "bareiron",
+        "depth": 8,
+        "file_count": 9
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game",
+        "name": "game",
+        "depth": 9,
+        "file_count": 9
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res",
+        "name": "res",
+        "depth": 6,
+        "file_count": 7
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/layout",
+        "name": "layout",
+        "depth": 7,
+        "file_count": 5
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/values",
+        "name": "values",
+        "depth": 7,
+        "file_count": 2
+      },
+      {
+        "path": "android/BareironApp/gradle",
+        "name": "gradle",
+        "depth": 3,
+        "file_count": 1
+      },
+      {
+        "path": "android/BareironApp/gradle/wrapper",
+        "name": "wrapper",
+        "depth": 4,
+        "file_count": 1
+      },
+      {
+        "path": "config",
+        "name": "config",
+        "depth": 1,
+        "file_count": 1
+      },
+      {
+        "path": "docs",
+        "name": "docs",
+        "depth": 1,
+        "file_count": 4
+      },
+      {
+        "path": "docs/assets",
+        "name": "assets",
+        "depth": 2,
+        "file_count": 2
+      },
+      {
+        "path": "docs/assets/css",
+        "name": "css",
+        "depth": 3,
+        "file_count": 1
+      },
+      {
+        "path": "docs/assets/js",
+        "name": "js",
+        "depth": 3,
+        "file_count": 1
+      },
+      {
+        "path": "include",
+        "name": "include",
+        "depth": 1,
+        "file_count": 15
+      },
+      {
+        "path": "maps",
+        "name": "maps",
+        "depth": 1,
+        "file_count": 3
+      },
+      {
+        "path": "src",
+        "name": "src",
+        "depth": 1,
+        "file_count": 19
+      }
+    ],
+    "files": [
+      {
+        "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+        "name": "bug_report.md",
+        "extension": ".md"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+        "name": "feature_request.md",
+        "extension": ".md"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/optimization-idea.md",
+        "name": "optimization-idea.md",
+        "extension": ".md"
+      },
+      {
+        "path": ".github/workflows/build.yml",
+        "name": "build.yml",
+        "extension": ".yml"
+      },
+      {
+        "path": ".github/workflows/command-site-snapshot.yml",
+        "name": "command-site-snapshot.yml",
+        "extension": ".yml"
+      },
+      {
+        "path": ".gitignore",
+        "name": ".gitignore",
+        "extension": ""
+      },
+      {
+        "path": "GAME_READY.txt",
+        "name": "GAME_READY.txt",
+        "extension": ".txt"
+      },
+      {
+        "path": "LICENSE",
+        "name": "LICENSE",
+        "extension": ""
+      },
+      {
+        "path": "README.md",
+        "name": "README.md",
+        "extension": ".md"
+      },
+      {
+        "path": "SETUP_REPORT.txt",
+        "name": "SETUP_REPORT.txt",
+        "extension": ".txt"
+      },
+      {
+        "path": "android/BareironApp/app/build.gradle",
+        "name": "build.gradle",
+        "extension": ".gradle"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/AndroidManifest.xml",
+        "name": "AndroidManifest.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/addons/creature_compendium.json",
+        "name": "creature_compendium.json",
+        "extension": ".json"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/cities/steelhaven.json",
+        "name": "steelhaven.json",
+        "extension": ".json"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/dimensions/nether_moria.json",
+        "name": "nether_moria.json",
+        "extension": ".json"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/assets/content/realms/aetherfall.json",
+        "name": "aetherfall.json",
+        "extension": ".json"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/BareironApp.java",
+        "name": "BareironApp.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/ContentListFragment.java",
+        "name": "ContentListFragment.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/ContentManagerActivity.java",
+        "name": "ContentManagerActivity.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/ContentPack.java",
+        "name": "ContentPack.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/ContentPackManager.java",
+        "name": "ContentPackManager.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/ContentPagerAdapter.java",
+        "name": "ContentPagerAdapter.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/MainActivity.java",
+        "name": "MainActivity.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/PackAdapter.java",
+        "name": "PackAdapter.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/java/com/bareiron/game/ServerConnectActivity.java",
+        "name": "ServerConnectActivity.java",
+        "extension": ".java"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/layout/activity_content_manager.xml",
+        "name": "activity_content_manager.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/layout/activity_main.xml",
+        "name": "activity_main.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/layout/activity_server_connect.xml",
+        "name": "activity_server_connect.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/layout/fragment_content_list.xml",
+        "name": "fragment_content_list.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/layout/item_content_pack.xml",
+        "name": "item_content_pack.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/values/strings.xml",
+        "name": "strings.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/app/src/main/res/values/themes.xml",
+        "name": "themes.xml",
+        "extension": ".xml"
+      },
+      {
+        "path": "android/BareironApp/build.gradle",
+        "name": "build.gradle",
+        "extension": ".gradle"
+      },
+      {
+        "path": "android/BareironApp/gradle.properties",
+        "name": "gradle.properties",
+        "extension": ".properties"
+      },
+      {
+        "path": "android/BareironApp/gradle/wrapper/gradle-wrapper.properties",
+        "name": "gradle-wrapper.properties",
+        "extension": ".properties"
+      },
+      {
+        "path": "android/BareironApp/settings.gradle",
+        "name": "settings.gradle",
+        "extension": ".gradle"
+      },
+      {
+        "path": "android/README.md",
+        "name": "README.md",
+        "extension": ".md"
+      },
+      {
+        "path": "android/build.sh",
+        "name": "build.sh",
+        "extension": ".sh"
+      },
+      {
+        "path": "build.sh",
+        "name": "build.sh",
+        "extension": ".sh"
+      },
+      {
+        "path": "build_registries.js",
+        "name": "build_registries.js",
+        "extension": ".js"
+      },
+      {
+        "path": "config/game.json",
+        "name": "game.json",
+        "extension": ".json"
+      },
+      {
+        "path": "docs/.nojekyll",
+        "name": ".nojekyll",
+        "extension": ""
+      },
+      {
+        "path": "docs/assets/css/bareiron.css",
+        "name": "bareiron.css",
+        "extension": ".css"
+      },
+      {
+        "path": "docs/assets/js/bareiron.js",
+        "name": "bareiron.js",
+        "extension": ".js"
+      },
+      {
+        "path": "docs/index.html",
+        "name": "index.html",
+        "extension": ".html"
+      },
+      {
+        "path": "extract_registries.sh",
+        "name": "extract_registries.sh",
+        "extension": ".sh"
+      },
+      {
+        "path": "include/crafting.h",
+        "name": "crafting.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/crafting_expansion.h",
+        "name": "crafting_expansion.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/fathers_house.h",
+        "name": "fathers_house.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/gameplay_expansion.h",
+        "name": "gameplay_expansion.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/globals.h",
+        "name": "globals.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/multiplayer.h",
+        "name": "multiplayer.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/packets.h",
+        "name": "packets.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/procedures.h",
+        "name": "procedures.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/savegame.h",
+        "name": "savegame.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/serialize.h",
+        "name": "serialize.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/structures.h",
+        "name": "structures.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/tools.h",
+        "name": "tools.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/varnum.h",
+        "name": "varnum.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/villages_npcs.h",
+        "name": "villages_npcs.h",
+        "extension": ".h"
+      },
+      {
+        "path": "include/worldgen.h",
+        "name": "worldgen.h",
+        "extension": ".h"
+      },
+      {
+        "path": "install.sh",
+        "name": "install.sh",
+        "extension": ".sh"
+      },
+      {
+        "path": "maps/default.map",
+        "name": "default.map",
+        "extension": ".map"
+      },
+      {
+        "path": "maps/fortress.map",
+        "name": "fortress.map",
+        "extension": ".map"
+      },
+      {
+        "path": "maps/maze.map",
+        "name": "maze.map",
+        "extension": ".map"
+      },
+      {
+        "path": "quickstart.sh",
+        "name": "quickstart.sh",
+        "extension": ".sh"
+      },
+      {
+        "path": "src/CMakeLists.txt",
+        "name": "CMakeLists.txt",
+        "extension": ".txt"
+      },
+      {
+        "path": "src/crafting.c",
+        "name": "crafting.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/crafting_expansion.c",
+        "name": "crafting_expansion.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/fathers_house.c",
+        "name": "fathers_house.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/gameplay_expansion.c",
+        "name": "gameplay_expansion.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/globals.c",
+        "name": "globals.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/main.c",
+        "name": "main.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/multiplayer.c",
+        "name": "multiplayer.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/packets.c",
+        "name": "packets.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/procedures.c",
+        "name": "procedures.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/savegame.c",
+        "name": "savegame.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/serialize.c",
+        "name": "serialize.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/structures.c",
+        "name": "structures.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/tools.c",
+        "name": "tools.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/varnum.c",
+        "name": "varnum.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/villages_npcs.c",
+        "name": "villages_npcs.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/worldgen.c",
+        "name": "worldgen.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/zombie_game.c",
+        "name": "zombie_game.c",
+        "extension": ".c"
+      },
+      {
+        "path": "src/zombie_game.h",
+        "name": "zombie_game.h",
+        "extension": ".h"
+      },
+      {
+        "path": "test_server.py",
+        "name": "test_server.py",
+        "extension": ".py"
+      }
+    ]
+  },
   "tools": [],
   "toolsets": [],
   "cases": [],
@@ -25,6 +671,13 @@
   "evidence": [],
   "agent_ops": {},
   "activity": [
+    {
+      "id": "7f5220d0a5a9cf9d05ae945797bdf726e34aefa5",
+      "type": "commit",
+      "title": "Command site: enable repository Explorer snapshots",
+      "timestamp": "2026-08-16T19:18:18-05:00",
+      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/7f5220d0a5a9cf9d05ae945797bdf726e34aefa5"
+    },
     {
       "id": "1f303ed69f40fe9bd1ecb448350834ebc06fd42b",
       "type": "commit",
@@ -87,13 +740,6 @@
       "title": "feat: Villages, NPCs, Witch Boss, and Retro Hero Easter Eggs",
       "timestamp": "2026-08-02T15:37:47Z",
       "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/bf66088a7212f16feacc62e446bd9288d196b275"
-    },
-    {
-      "id": "ba2db2244b80f2456147d1bee4b5ce9d8070d87d",
-      "type": "commit",
-      "title": "feat: Advanced gameplay expansion \u2014 The Ancient boss, weapon upgrades, perks, discovery items",
-      "timestamp": "2026-08-02T14:59:37Z",
-      "url": "https://github.com/kaibuzz0/Termux-Mobile-BAREIRON-server/commit/ba2db2244b80f2456147d1bee4b5ce9d8070d87d"
     }
   ],
   "links": [
