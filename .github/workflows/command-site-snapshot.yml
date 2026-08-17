@@ -26,7 +26,7 @@ jobs:
         env:
           COMMAND_SITE_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
-          curl --fail --silent --show-error --location --output /tmp/export_repo_snapshot.py https://raw.githubusercontent.com/kaibuzz0/Git-hub-command-site/131fb04af009bddaaf173711b6e31c3f651210b4/connectors/export_repo_snapshot.py
+          curl --fail --silent --show-error --location --output /tmp/export_repo_snapshot.py https://raw.githubusercontent.com/kaibuzz0/Git-hub-command-site/f01dbda76e0badfb162b0ecd14c30416ba6a8582/connectors/export_repo_snapshot.py
           python /tmp/export_repo_snapshot.py --output /tmp/repo-snapshot.json
       - name: Publish generated snapshot branch
         shell: bash
